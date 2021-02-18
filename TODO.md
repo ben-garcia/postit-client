@@ -18,8 +18,11 @@
   - [] Prettier
     - should play nice with ESLint
   - [] Testing
-    - jest
-    - testing-library/react
+    - [] jest
+    - [] testing-library/react
+		- accessibility
+			- [] [jest-axe](https://github.com/nickcolley/jest-axe#readme)
+			- [] [axe-core](https://www.npmjs.com/package/jest-axe)
   - [] Cypress
     - typescript setup
   - [] Husky && lint-staging

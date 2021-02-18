@@ -13,6 +13,7 @@ Postit is a clone of [Reddit](https://www.reddit.com/) built using [NextJS](http
   - posts can include images and videos (stored in [Cloudindary](https://cloudinary.com/))
 - add comments on posts, and other comments
 - wysiwyg editor that extends [DraftJS](https://draftjs.org/)
+- markdown editor that extends [markdown-to-jsx](https://github.com/probablyup/markdown-to-jsx)
 - give and receive karma
 - purchase coins
 - give and receive awards
