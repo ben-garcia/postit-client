@@ -6,7 +6,8 @@
 
 - ### [] Development Environment
 
-  - [] NextJS
+  - [x] NextJS
+		- configure typescript
     - configure sass
   - [] Storybook
     - configure to work with sass
