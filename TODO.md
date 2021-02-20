@@ -9,10 +9,10 @@
   - [x] NextJS
 		- configure typescript
     - configure sass
-  - [] Storybook
+  - [x] Storybook
     - configure to work with sass
     - install @storybook/addon-a11y to follow accessibility standards
-  - [] ESLint
+  - [x] ESLint
     - airbnb style guide
   - [] Stylelint
     - lint sass
