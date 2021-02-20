@@ -1,4 +1,3 @@
-/* eslint react/react-in-jsx-scope: 0 */
 import Head from 'next/head';
 
 import '../styles/Home.scss';
