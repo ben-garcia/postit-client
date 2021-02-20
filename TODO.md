@@ -14,9 +14,9 @@
     - install @storybook/addon-a11y to follow accessibility standards
   - [x] ESLint
     - airbnb style guide
-  - [] Stylelint
+  - [x] Stylelint
     - lint sass
-  - [] Prettier
+  - [x] Prettier
     - should play nice with ESLint
   - [] Testing
     - [] jest

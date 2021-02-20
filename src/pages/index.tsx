@@ -1,6 +1,7 @@
-import Head from 'next/head'
+/* eslint react/react-in-jsx-scope: 0 */
+import Head from 'next/head';
 
-import '../styles/Home.scss'
+import '../styles/Home.scss';
 
 export default function Home() {
   return (
@@ -12,11 +13,12 @@ export default function Home() {
 
       <main className="main">
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to
+          <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <p className="description">
-          Get started by editing{' '}
+          Get started by editing
           <code className="code">pages/index.tsx</code>
         </p>
 
@@ -57,10 +59,10 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by
           <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
     </div>
-  )
+  );
 }
