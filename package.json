@@ -7,12 +7,13 @@
     "build-storybook": "build-storybook",
     "dev": "next dev",
     "format": "prettier --write 'src/**/*.{ts,tsx,json,md}'",
-    "lint:ts": "eslint src --fix",
+    "lint": "eslint --ext js,ts,tsx --fix",
     "lint:scss": "stylelint --fix 'src/**/*.scss'",
     "start": "next start",
     "storybook": "start-storybook -p 6006",
     "test": "jest --watch",
-		"test:coverage": "jest --coverage"
+		"test:coverage": "jest --coverage",
+		"type-check": "tsc --project tsconfig.json --pretty --noEmit"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",

@@ -11,10 +11,6 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   ignorePatterns: ['node_modules/*', '.next/*'],
-  overrides: [
-		'prettier/@typescript-eslint', 
-    'plugin:prettier/recommended',
-  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -37,8 +33,8 @@ module.exports = {
     'import/no-unresolved': 0,
     // import React from 'react'
     'no-use-before-define': 'off',
-		// Includes .prettierrc.js rules
-		'prettier/prettier': ['error', {}, { usePrettierrc: true }],
+    // Includes .prettierrc.js rules
+    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     // jsx in files with .tsx since I am  using Typescript
     'react/jsx-filename-extension': 0,
     // Use spread syntax when passing props to components
