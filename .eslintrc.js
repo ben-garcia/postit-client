@@ -11,6 +11,14 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   ignorePatterns: ['node_modules/*', '.next/*'],
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      parserOptions: {
+        project: ['tsconfig.json'],
+      },
+    },
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -21,15 +29,15 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
-    // Why would you want unused vars?
+    // Who needs unused variables
     '@typescript-eslint/no-unused-vars': ['error'],
     // This rule clashes with Next.js's <Link /> component
     'jsx-a11y/anchor-is-valid': 'off',
-    // use tsx extension
-    'import/extensions': 'off',
+    // Use tsx extension
+    'import/extensions': ['error', { extensions: ['.tsx'] }],
     // @testing-library/react @testing-library/js-dom as devDependencies
     'import/no-extraneous-dependencies': 0,
-    // types from @storybook/react/types-6-0
+    // Types from @storybook/react/types-6-0
     'import/no-unresolved': 0,
     // import React from 'react'
     'no-use-before-define': 'off',
