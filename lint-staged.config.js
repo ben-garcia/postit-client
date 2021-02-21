@@ -8,6 +8,6 @@ module.exports = {
   // Run prettier on changes to js, ts, tsx, json, md
   '**/*.(js|ts|tsx|json|md)': filenames => `yarn format ${filenames.join(' ')}`,
   // Run jest on changes to ts, tsx
-  '**/*.(ts|tsx)': filenames =>
+  '**/*.test.(ts|tsx)': filenames =>
     `yarn test --passWithNoTests ${filenames.join(' ')}`,
 };
