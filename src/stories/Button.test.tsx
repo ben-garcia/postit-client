@@ -1,11 +1,15 @@
 import React from 'react';
-import { render, RenderResult } from '@testing-library/react';
 
+import { render, a11yTest } from '../test-utils';
 import { Button } from './Button';
 
 describe('<Button />', () => {
+  it('should pass a11y tests', async () => {
+    await a11yTest(<Button label="button" />);
+  });
+
   it('should render', () => {
-    const { container }: RenderResult = render(<Button label="button" />);
+    const { container } = render(<Button label="button" />);
 
     expect(container).toBeInTheDocument();
   });

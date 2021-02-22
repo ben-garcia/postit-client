@@ -7,7 +7,7 @@
 - ### [] Development Environment
 
   - [x] NextJS
-		- configure typescript
+    - configure typescript
     - configure sass
   - [x] Storybook
     - configure to work with sass
@@ -19,12 +19,17 @@
   - [x] Prettier
     - should play nice with ESLint
   - [] Testing
-    - [] jest
-    - [] testing-library/react
-		- accessibility
-			- [] [jest-axe](https://github.com/nickcolley/jest-axe#readme)
-			- [] [axe-core](https://www.npmjs.com/package/jest-axe)
-  - [] Cypress
-    - typescript setup
-  - [] Husky && lint-staging
+    - [x] jest
+    - [x] testing-library/react
+    - [x] testing-library/react-hooks
+      - testing custom hooks
+    - [x] testing-library/user-event
+      - offers more advance event simulations than 'fireEvent'
+      - simulate <input type="file" multiple />
+    - accessibility
+      - [x] [jest-axe](https://github.com/nickcolley/jest-axe#readme)
+      - [x] [axe-core](https://www.npmjs.com/package/jest-axe)
+    - [] Cypress
+      - typescript setup
+  - [x] Husky && lint-staging
     - should pass testing and linting
