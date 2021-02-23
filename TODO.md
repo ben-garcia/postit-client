@@ -25,11 +25,81 @@
       - testing custom hooks
     - [x] testing-library/user-event
       - offers more advance event simulations than 'fireEvent'
-      - simulate <input type="file" multiple />
+      - simulate input tag with type="file" multiple
     - accessibility
-      - [x] [jest-axe](https://github.com/nickcolley/jest-axe#readme)
-      - [x] [axe-core](https://www.npmjs.com/package/jest-axe)
+      - [x] jest-axe
+      - [x] axe-core
     - [] Cypress
       - typescript setup
   - [x] Husky && lint-staging
     - should pass testing and linting
+
+- ### Components
+
+  - atoms
+
+    - Colors
+
+      - blue : #0079d3 (buttons and links, switch background)
+      - dark blue : #5A75CC (downvote hover state)
+      - blue : #0079d3 (active post filter button 'Best', 'Hot', 'New', 'Top')
+      - blue : #33a8ff (new banner)
+      - dark orange : CC3700 (upvote hover state)
+      - white : #ffffff (background, text color, switch dot)
+      - gold : #ddbd37 (coins)
+      - red : #ff0000 (error)
+      - red : #EA0027 (notification error)
+      - grey : #878a8c (post card footer)
+      - grey : #1a1a1b (hover post card footer buttons)
+      - red : #ff585b (delete account)
+      - orange : #ff4500 (premium try now button)
+      - black : #1c1c1c (svg)
+      - black : #030303 (post close section)
+      - Color Picker
+        - first row
+          - light-red : #ea0027
+          - light-orange : #ff4500
+          - light-yellow-gold : #ffb200
+          - light-yellow : #ffd635
+          - light-light-green : #94e044
+          - light-greenish : #46d160
+          - light-teal : #0dd3bb
+          - light-sky-blue : #00a6a5
+        - second row
+          - dark-red : #b8001f
+          - dark-orange : #cc3600
+          - dark-yellow-gold : #cc8b00
+          - dark-yellow : #ccac2b
+          - dark-light-green : #73ad34
+          - dark-greenish : #349e48
+          - dark-teal : #0aa18f
+          - dark-sky-blue : #007373
+        - third row
+          - primary-blue : #0079d3
+          - primary-dark : #014980
+          - light-light-primary : #7193ff
+          - light-pink : #ff66ac
+          - green-brown : #9e8d49
+          - yellow-brown : #ddbd37
+          - light-grey : #edeff1
+          - dark-grey : #373c3f
+        - fourth row
+          - dark-primary-blue : #005ba1
+          - dark-primary-dark : #0266b3
+          - dark-blue-purple: #5a74cc
+          - dark-pink : #cc5289
+          - dark-green-brown : #6b6031
+          - dark-yellow-brown : #ab912b
+          - light-dark-grey : #bbbdbf
+          - dark-dark-grey : #646d73
+
+    - Typography
+
+      - IBMPlexSans, arial, sans-serif (post heading)
+      - Noto Sans, Arial, sans-serif (post text, comments)
+
+  - molecules
+
+  - organisms
+
+  - templates
