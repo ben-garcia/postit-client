@@ -2,7 +2,7 @@
 
 ## The Plan
 
-> I will use storybook to develop components using [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) principles
+> I will use storybook to develop components using [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) principles.
 
 - ### [] Development Environment
 
@@ -95,8 +95,8 @@
 
     - Typography
 
-      - IBMPlexSans, arial, sans-serif (post heading)
-      - Noto Sans, Arial, sans-serif (post text, comments)
+      - primary : IBMPlexSans, Arial, sans-serif (post heading)
+      - secondary : Noto Sans, Arial, sans-serif (post text, comments)
 
   - molecules
 
