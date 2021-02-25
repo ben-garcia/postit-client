@@ -40,6 +40,7 @@ module.exports = {
     // Types from @storybook/react/types-6-0
     'import/no-unresolved': 0,
     // import React from 'react'
+    'import/prefer-default-export': 0,
     'no-use-before-define': 'off',
     // Includes .prettierrc.js rules
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],

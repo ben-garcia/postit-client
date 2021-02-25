@@ -1,5 +1,7 @@
 # Component Library
 
+supernova-ui
+
 ## The Plan
 
 > My plan is to develop a component library, based on [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/), that I can publish to [npm](https://www.npmjs.com/) for my future projects. The component library will have all the necessary components I need to complete Postit.
@@ -9,9 +11,7 @@ theme options from [chakra-ui](https://chakra-ui.com/) to start.
 ### Features
 
 - Theme that can be customized to fit any project.
-
   - colors
-
     - black: 000000
     - blackAlpha
       - 50: rgba(0, 0, 0, 0.04)
@@ -148,9 +148,7 @@ theme options from [chakra-ui](https://chakra-ui.com/) to start.
       - 700: #975A16
       - 800: #744210
       - 900: #5F370E
-
   - radii
-
     - 2xl: 1rem
     - 3xl: 1.5rem
     - base: 0.25rem
@@ -160,7 +158,6 @@ theme options from [chakra-ui](https://chakra-ui.com/) to start.
     - none: 0
     - sm: 0.125rem
     - xl: 0.75rem
-
   - typography
     - letter-spacing
       - tighter: -0.05em,
@@ -221,21 +218,20 @@ theme options from [chakra-ui](https://chakra-ui.com/) to start.
     - xl: 1280px or 80em
     - xxl: 1536px or 96em
   - sizes
-
-    - 0: "0"
-    - 0.5: "0.125rem"
-    - 1: "0.25rem"
-    - 1.5: "0.375rem"
-    - 2: "0.5rem"
-    - 2.5: "0.625rem"
-    - 3: "0.75rem"
-    - 3.5: "0.875rem"
+    - 0: 0
+    - 0.5: 0.125rem
+    - 1: 0.25rem
+    - 1.5: 0.375rem
+    - 2: 0.5rem
+    - 2.5: 0.625rem
+    - 3: 0.75rem
+    - 3.5: 0.875rem
     - 4: 1rem
     - 5: 1.25rem
-    - 6: 1.5rem"
-    - 7: 1.75rem"
-    - 8: 2rem"
-    - 9: 2.25rem"
+    - 6: 1.5rem
+    - 7: 1.75rem
+    - 8: 2rem
+    - 9: 2.25rem
     - 10: 2.5rem
     - 12: 3rem
     - 14: 3.5rem
@@ -264,9 +260,7 @@ theme options from [chakra-ui](https://chakra-ui.com/) to start.
     - 6xl: 72rem
     - 7xl: 80rem
     - 8xl: 90rem
-
   - shadows
-
     - 2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25)
     - base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)
     - dark-lg: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.2) 0px 5px 10px, rgba(0, 0, 0, 0.4) 0px 15px 40px
@@ -279,9 +273,7 @@ theme options from [chakra-ui](https://chakra-ui.com/) to start.
     - sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05)
     - xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)
     - xs: 0 0 0 1px rgba(0, 0, 0, 0.05)
-
   - space
-
     - 0: 0
     - 0.5: 0.125rem
     - 1: 0.25rem
@@ -316,17 +308,12 @@ theme options from [chakra-ui](https://chakra-ui.com/) to start.
     - 80: 20rem
     - 96: 24rem
     - px: 1px
-
   - transition
-
     - easing
-
       - ease-in: cubic-bezier(0.4, 0, 1, 1)
       - ease-in-out: cubic-bezier(0.4, 0, 0.2, 1)
       - ease-out: cubic-bezier(0, 0, 0.2, 1)
-
     - duration
-
       - ultra-slow: 500ms
       - ultra-fast: 50ms
       - slower: 400ms
@@ -334,15 +321,12 @@ theme options from [chakra-ui](https://chakra-ui.com/) to start.
       - normal: 200ms
       - fast: 150ms
       - faster: 100ms
-
     - property
-
       - background: background-color, background-image, background-position
       - colors: background-color, border-color, color, fill, stroke
       - common: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform
       - dimensions: width, height
       - position: left, right, top, bottom
-
   - z-index
     - auto: auto
     - banner: 1200
@@ -356,3 +340,30 @@ theme options from [chakra-ui](https://chakra-ui.com/) to start.
     - skipLink: 1600
     - sticky: 1100
     - toast: 1700
+
+#### Notes
+
+- Accessibility
+  - Tabs
+    - have an aria-label(description), role="tablist"
+    - children should have role="tablist"
+    - active tab needs aria-selected="true"
+    - container that shows content needs role="tabpanel"
+  - Dropdown
+    - role="listbox"
+    - aria-expanded="false" when options are hidden
+    - children have role="option", aria-checked="true", aria-selected="true"(when selected)
+  - TextInput
+    - aria-hidden="true" if it has visual components like <Icon />
+  - Checkbox
+    - aria-checked="true" when it's checked
+    - role="checkbox"
+    - aria-labeledby="#id" set to another element to describe it
+  - Radio
+    - svg image needs role="presentation" to declare is has no semantic meaning
+    - container needs aria-labeldby set to the description of each option
+      - e.g description of community type(public, protected, private) in create community
+    - role="radio"
+    - aria-checked to let the user know about state
+    - RadioGroup
+      - role="radiogroup"

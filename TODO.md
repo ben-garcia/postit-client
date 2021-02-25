@@ -37,9 +37,7 @@
 - ### Components
 
   - atoms
-
     - Colors
-
       - blue : #0079d3 (buttons and links, switch background)
       - dark blue : #5A75CC (downvote hover state)
       - blue : #0079d3 (active post filter button 'Best', 'Hot', 'New', 'Top')
@@ -92,14 +90,12 @@
           - dark-yellow-brown : #ab912b
           - light-dark-grey : #bbbdbf
           - dark-dark-grey : #646d73
-
     - Typography
-
       - primary : IBMPlexSans, Arial, sans-serif (post heading)
       - secondary : Noto Sans, Arial, sans-serif (post text, comments)
-
+    - TextInput
+      - Props
+        - maxLength : max length of the characters a use can enter
   - molecules
-
   - organisms
-
   - templates
