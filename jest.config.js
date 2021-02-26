@@ -10,7 +10,7 @@ module.exports = {
   transform: {
     '^.+\\.(ts|tsx)?$': 'ts-jest',
   },
-  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/setup-tests.ts'],
   testPathIgnorePatterns: [
     '.next/',
     '/node_modules/',

@@ -28,6 +28,6 @@
     "jsx": "preserve",
     "isolatedModules": false
   },
-  "include": ["next-env.d.ts", "src", "setupTests.ts"],
-	"exclude": ["node_modules", "<rootDir>/**/*.test.(ts|tsx)"]
+  "include": ["next-env.d.ts", "src", "setup-tests.ts"],
+  "exclude": ["node_modules", "<rootDir>/**/*.test.(ts|tsx)"]
 }
