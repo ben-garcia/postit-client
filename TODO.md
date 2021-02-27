@@ -31,6 +31,8 @@
       - [x] axe-core
     - [] Cypress
       - typescript setup
+  - [x] commitlint
+    - checks that commit messages adhere to [conventionalcommits](https://www.conventionalcommits.org/en/v1.0.0/)
   - [x] Husky && lint-staging
     - should pass testing and linting
 
