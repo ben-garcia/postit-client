@@ -1,4 +1,11 @@
 module.exports = {
+  // what files to include or exclude in the coverage report(regardless of test files)
+  collectCoverageFrom: [
+    '**/*.{ts,tsx}',
+    '!**/node_modules/**',
+    '!**/*.stories.tsx',
+    '!src/theme/**/*',
+  ],
   globals: {
     'ts-jest': {
       tsconfig: 'tsconfig.jest.json',
