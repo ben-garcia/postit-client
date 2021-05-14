@@ -95,9 +95,6 @@
     - Typography
       - primary : IBMPlexSans, Arial, sans-serif (post heading)
       - secondary : Noto Sans, Arial, sans-serif (post text, comments)
-    - TextInput
-      - Props
-        - maxLength : max length of the characters a use can enter
   - molecules
   - organisms
   - templates
