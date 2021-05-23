@@ -26,7 +26,7 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "jsx": "preserve",
-    "isolatedModules": false
+    "isolatedModules": true
   },
   "include": ["next-env.d.ts", "src", "setup-tests.ts"],
   "exclude": ["node_modules", "<rootDir>/**/*.test.(ts|tsx)"]
