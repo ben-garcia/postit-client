@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SupernovaProvider } from '../src/contexts/supernova';
+import { SupernovaProvider } from 'supernova-ui';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
