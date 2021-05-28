@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SupernovaProvider } from 'supernova-ui';
 
-
+import '../src/sass/main.scss';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
