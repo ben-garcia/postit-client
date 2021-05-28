@@ -1,0 +1,21 @@
+.switch-button {
+  align-items: center;
+  appearance: none;
+  background-color: var(--color-brand-blue100);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  height: 25px;
+  position: relative;
+  width: 50px;
+
+  &__circle {
+    background-color: white;
+    border-radius: 50%;
+    height: 20px;
+    position: absolute;
+    width: 20px;
+    transition: transform 0.4s ease;
+  }
+}
