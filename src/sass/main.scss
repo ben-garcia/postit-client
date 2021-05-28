@@ -1,11 +1,2 @@
-@font-face {
-  font-family: IBMPlexSans;
-  font-style: normal;
-  src: url('../assets/fonts/ibm-plex-sans.regular.ttf'), format('truetype');
-}
-
-@font-face {
-  font-family: NotoSans;
-  font-style: normal;
-  src: url('../assets/fonts/NotoSans-Regular.ttf') format('truetype');
-}
+@import 'fonts';
+@import 'variables';
