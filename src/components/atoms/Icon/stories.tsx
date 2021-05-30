@@ -21,6 +21,8 @@ import {
   KarmaIcon,
   LinkIcon,
   ListIcon,
+  LogoIcon,
+  LogoTextIcon,
   ModMailIcon,
   ModModeIcon,
   ModShieldIcon,
@@ -108,5 +110,12 @@ export const All = () => (
     <TriangleDownIcon size="3rem" />
     <TriangleUpIcon size="3rem" />
     <UploadIcon size="3rem" />
+  </div>
+);
+
+export const Logos = () => (
+  <div>
+    <LogoIcon size="3rem" />
+    <LogoTextIcon size="4rem" />
   </div>
 );

@@ -17,6 +17,8 @@ import ItalicIcon from './ItalicIcon';
 import KarmaIcon from './KarmaIcon';
 import LinkIcon from './LinkIcon';
 import ListIcon from './ListIcon';
+import LogoIcon from './LogoIcon';
+import LogoTextIcon from './LogoTextIcon';
 import ModMailIcon from './ModMailIcon';
 import ModModeIcon from './ModModeIcon';
 import ModShieldIcon from './ModShieldIcon';
@@ -68,6 +70,8 @@ export {
   KarmaIcon,
   LinkIcon,
   ListIcon,
+  LogoIcon,
+  LogoTextIcon,
   ModMailIcon,
   ModModeIcon,
   ModShieldIcon,

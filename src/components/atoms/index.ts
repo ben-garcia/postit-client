@@ -1,6 +1,6 @@
 import Button from './Button';
+import SearchBar from './SearchBar';
 import SwitchButton from './SwitchButton';
 
-export { Button };
 export * from './Icon/Icons';
-export { SwitchButton };
+export { Button, SearchBar, SwitchButton };
