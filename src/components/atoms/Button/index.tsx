@@ -7,6 +7,7 @@ interface ButtonProps {
   color?: string;
   hoverColor?: string;
   leftIcon?: ReactNode;
+  margin?: string;
   primary?: boolean;
   secondary?: boolean;
 }
@@ -17,6 +18,7 @@ const Button: FC<ButtonProps> = props => {
     color = undefined,
     hoverColor = undefined,
     leftIcon = undefined,
+    margin,
     primary,
     secondary,
   } = props;
@@ -36,6 +38,7 @@ const Button: FC<ButtonProps> = props => {
       borderRadius="xxl"
       hoverBackgroundColor={hoverColor}
       leftIcon={leftIcon}
+      margin={margin}
       variant={buttonType}
     >
       {children}
