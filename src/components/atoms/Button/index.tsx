@@ -4,10 +4,12 @@ import { Button as SButton } from 'supernova-ui';
 
 interface ButtonProps {
   children: ReactNode;
+  className?: string;
   color?: string;
   hoverColor?: string;
   leftIcon?: ReactNode;
   margin?: string;
+  onClick?: () => void;
   primary?: boolean;
   secondary?: boolean;
 }
@@ -15,10 +17,12 @@ interface ButtonProps {
 const Button: FC<ButtonProps> = props => {
   const {
     children,
+    className,
     color = undefined,
     hoverColor = undefined,
     leftIcon = undefined,
     margin,
+    onClick,
     primary,
     secondary,
   } = props;
@@ -36,9 +40,11 @@ const Button: FC<ButtonProps> = props => {
     <SButton
       backgroundColor={color}
       borderRadius="xxl"
+      className={className?.trim().length ? className : undefined}
       hoverBackgroundColor={hoverColor}
       leftIcon={leftIcon}
       margin={margin}
+      onClick={onClick}
       variant={buttonType}
     >
       {children}
