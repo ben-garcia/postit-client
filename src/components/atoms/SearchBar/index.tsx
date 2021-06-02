@@ -2,13 +2,19 @@ import React, { FC } from 'react';
 
 import { SearchIcon, TextInput } from 'supernova-ui';
 
-interface SearchBarProps {}
+interface SearchBarProps {
+  className?: string;
+  fill?: string;
+}
 
-const SearchBar: FC<SearchBarProps> = () => {
+const SearchBar: FC<SearchBarProps> = props => {
+  const { className, fill = 'brandGrey200' } = props;
+
   return (
-    <form>
+    <form className="searchbar-form">
       <TextInput
-        leftIcon={<SearchIcon fill="brandGrey200" size="1.3rem" />}
+        className={className}
+        leftIcon={<SearchIcon fill={fill} size="1.3rem" />}
         label="Search"
       />
     </form>
