@@ -1,0 +1,30 @@
+.mobile-menu {
+  background-color: var(--color-brand-blue500);
+  color: var(--color-brand-white);
+  padding: 1rem;
+  width: 100vw;
+
+  &__searchbar {
+    color: var(--color-brand-white);
+  }
+
+  &__cta {
+    width: 100%;
+  }
+
+  .menu-list {
+    margin: 1rem 0;
+
+    &__wrapper {
+      align-items: center;
+      display: flex;
+    }
+
+    &__item {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      margin: 1rem 0;
+    }
+  }
+}

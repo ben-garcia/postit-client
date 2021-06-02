@@ -1,0 +1,31 @@
+.hamburger-button {
+  align-items: center;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-inline-end: unset;
+  padding-inline-start: unset;
+
+  &__line {
+    background-color: var(--color-brand-white);
+    border-radius: 10px;
+    height: 4px;
+    margin: 2px 0;
+    transition: transform 0.4s ease;
+    width: 25px;
+
+    &--first {
+      transform: translate(1px, 9px) rotate(45deg) scale(1.2);
+    }
+
+    &--second {
+      transform: scale(0);
+    }
+
+    &--third {
+      transform: translate(1px, -6px) rotate(-45deg) scale(1.2);
+    }
+  }
+}
