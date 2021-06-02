@@ -1,30 +1,23 @@
 import React, { FC } from 'react';
 
-import { Button, LogoIcon, LogoTextIcon, SearchBar } from '../../atoms';
-import { UserMenu } from '../../molecules';
+import { useBreakpoint } from 'supernova-ui';
 
-import './styles.scss';
+import NavBarDesktop from './NavBarDesktop';
+import NavBarMobile from './NavBarMobile';
 
 interface NavBarProps {}
 
 const NavBar: FC<NavBarProps> = () => {
+  const breakpoint = useBreakpoint();
+
   return (
-    <header className="navbar">
-      <div className="navbar__wrapper">
-        <LogoIcon size="3rem" />
-        <LogoTextIcon size="4rem" />
-      </div>
-      <SearchBar />
-      <div className="navbar__wrapper">
-        <Button margin="0 xs" secondary>
-          Log In
-        </Button>
-        <Button margin="0 xs" primary>
-          Sign Up
-        </Button>
-        <UserMenu />
-      </div>
-    </header>
+    <>
+      {breakpoint === 'xs' || breakpoint === 'sm' || breakpoint === 'md' ? (
+        <NavBarMobile />
+      ) : (
+        <NavBarDesktop />
+      )}
+    </>
   );
 };
 
