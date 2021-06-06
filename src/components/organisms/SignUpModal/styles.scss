@@ -1,0 +1,45 @@
+.signup-modal {
+  width: 53% !important;
+
+  &__header {
+    font-size: 1.1rem;
+    margin-left: 15.7%;
+    margin-top: 5rem;
+  }
+
+  &__body {
+    align-self: center;
+    display: flex;
+    padding-left: 0;
+  }
+
+  &__image {
+    background-image: url('../../../assets/images/tiles.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 130px;
+  }
+
+  &__form {
+    margin-left: 19%;
+    width: 280px;
+  }
+
+  &__input {
+    font-size: 0.6rem;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    color: var(--color-brand-blue100);
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
