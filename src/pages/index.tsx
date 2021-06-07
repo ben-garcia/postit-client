@@ -1,3 +1,9 @@
+import { NavBar } from '../components/organisms';
+
 export default function Home() {
-  return <div>postit</div>;
+  return (
+    <div className="home-page">
+      <NavBar />
+    </div>
+  );
 }
