@@ -1,9 +1,13 @@
 import React, { FC } from 'react';
 
-// import { Button } from '../../../../atoms';
 import { Button } from 'supernova-ui';
 
-import './styles.scss';
+/**
+ * comment out for Next
+ *
+ * otherwise import when using Storybook
+ */
+// import './styles.scss';
 
 interface HamburgerButtonProps {
   isOpen: boolean;

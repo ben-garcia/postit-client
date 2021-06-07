@@ -1,7 +1,8 @@
 .navbar-desktop {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  padding: 0 2rem;
 
   &__wrapper {
     display: flex;

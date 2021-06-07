@@ -1,6 +1,11 @@
 import React, { FC } from 'react';
 
-import './styles.scss';
+/**
+ * comment out for Next
+ *
+ * otherwise import when using Storybook
+ */
+// import './styles.scss';
 
 interface SwitchButtonProps {
   'aria-describedby'?: string;

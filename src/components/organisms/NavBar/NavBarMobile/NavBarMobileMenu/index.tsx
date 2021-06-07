@@ -1,9 +1,15 @@
 import React, { FC } from 'react';
+import Link from 'next/link';
 
 import { ChevronDownIcon, InfoIcon, SettingsIcon, Text } from 'supernova-ui';
 import { Button, RisingIcon, SearchBar } from '../../../../atoms';
 
-import './styles.scss';
+/**
+ * comment out for Next
+ *
+ * otherwise import when using Storybook
+ */
+// import './styles.scss';
 
 interface NavBarMobileMenuProps {}
 
@@ -48,9 +54,11 @@ const NavBarMobileMenu: FC<NavBarMobileMenuProps> = () => {
           <ChevronDownIcon fill="white" size="0.7rem" />
         </div>
       </div>
-      <Button className="mobile-menu__cta" primary>
-        Log In / Sign Up
-      </Button>
+      <Link href="/register">
+        <Button className="mobile-menu__cta" primary>
+          Log In / Sign Up
+        </Button>
+      </Link>
     </div>
   );
 };

@@ -12,7 +12,13 @@ import {
 } from 'supernova-ui';
 
 import { Button } from '../../atoms';
-import './styles.scss';
+
+/**
+ * comment out for Next
+ *
+ * otherwise import when using Storybook
+ */
+// import './styles.scss';
 
 interface SignUpModalProps {
   isOpen: boolean;

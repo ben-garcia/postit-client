@@ -15,7 +15,12 @@ import {
 
 import { CoinIcon, PremiumShieldIcon, SwitchButton } from '../../atoms';
 
-import './styles.scss';
+/**
+ * comment out for Next
+ *
+ * otherwise import when using Storybook
+ */
+// import './styles.scss';
 
 interface UserMenuProps {}
 
@@ -41,8 +46,10 @@ const UserMenu: FC<UserMenuProps> = () => {
               className="user-menu__item space-between"
               onClick={() => setHasNightMode(!hasNightMode)}
             >
-              <HalfMoonIcon className="user-menu__icon" size="1rem" />
-              Night Mode
+              <div className="user-menu__inner">
+                <HalfMoonIcon className="user-menu__icon" size="1rem" />
+                Night Mode
+              </div>
               <SwitchButton
                 isActive={hasNightMode}
                 onChange={() => setHasNightMode(!hasNightMode)}

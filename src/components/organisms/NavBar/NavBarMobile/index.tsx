@@ -4,7 +4,12 @@ import { LogoIcon, LogoTextIcon } from '../../../atoms';
 import HamburgerButton from './HamburgerButton';
 import NavBarMobileMenu from './NavBarMobileMenu';
 
-import './styles.scss';
+/**
+ * comment out for Next
+ *
+ * otherwise import when using Storybook
+ */
+// import './styles.scss';
 
 interface NavBarMobileProps {}
 
