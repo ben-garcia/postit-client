@@ -12,9 +12,9 @@ import {
 import { Button } from '../../atoms';
 import './styles.scss';
 
-interface SignUpPageProps {}
+interface LoginPageProps {}
 
-const SignUpPage: FC<SignUpPageProps> = () => {
+const LoginPage: FC<LoginPageProps> = () => {
   return (
     <div className="login-page">
       <Flex wrap="nowrap">
@@ -67,4 +67,4 @@ const SignUpPage: FC<SignUpPageProps> = () => {
   );
 };
 
-export default SignUpPage;
+export default LoginPage;
