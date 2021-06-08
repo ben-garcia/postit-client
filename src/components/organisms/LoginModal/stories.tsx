@@ -15,7 +15,11 @@ export const Default = () => {
   return (
     <>
       <Button onClick={() => setIsOpen(true)}>open</Button>
-      <LoginModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <LoginModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        openSignUpModal={() => {}}
+      />
     </>
   );
 };

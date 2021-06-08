@@ -20,12 +20,22 @@ import { Button } from '../../atoms';
 // import './styles.scss';
 
 interface LoginModalProps {
+  /**
+   * flag to indicate whether the modal is open
+   */
   isOpen: boolean;
+  /**
+   * Function to call when closing the modal
+   */
   onClose: () => void;
+  /**
+   * function to call when the 'Sign Up' button is clicked
+   */
+  openSignUpModal: () => void;
 }
 
 const LoginModal: FC<LoginModalProps> = props => {
-  const { isOpen, onClose } = props;
+  const { isOpen, onClose, openSignUpModal } = props;
 
   return (
     <Modal className="login-modal" isOpen={isOpen} onClose={onClose}>
@@ -51,20 +61,26 @@ const LoginModal: FC<LoginModalProps> = props => {
           </FormControl>
           <Paragraph fontSize="0.75rem" margin="md 0 0 0">
             Forgot your
-            <Text className="signup-modal__text" margin="0 xs">
+            <Text className="login-modal__text" margin="0 xs">
               username
             </Text>
             or
-            <Text className="signup-modal__text" margin="0 xs">
+            <Text className="login-modal__text" margin="0 xs">
               password
             </Text>
             ?
           </Paragraph>
           <Paragraph fontSize="0.75rem" margin="md 0 0 0">
             New to Postit?
-            <Text className="signup-modal__text" margin="0 0 0 xs">
+            <Button
+              className="login-modal__button"
+              hoverColor="transparent"
+              onClick={openSignUpModal}
+              margin="0 0 0 xs"
+              secondary
+            >
               Sign Up
-            </Text>
+            </Button>
           </Paragraph>
         </form>
       </ModalBody>
