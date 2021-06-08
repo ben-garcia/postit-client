@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import Link from 'next/link';
 import {
   Flex,
   FlexItem,
@@ -6,11 +7,12 @@ import {
   FormHelperText,
   Heading,
   Paragraph,
-  Text,
   TextInput,
+  useBreakpoint,
 } from 'supernova-ui';
 
 import { Button } from '../../atoms';
+import NavBarMobile from '../../organisms/NavBar/NavBarMobile';
 
 /**
  * comment out for Next
@@ -22,15 +24,31 @@ import { Button } from '../../atoms';
 interface SignUpPageProps {}
 
 const SignUpPage: FC<SignUpPageProps> = () => {
+  const breakpoint = useBreakpoint();
+
   return (
     <div className="signup-page">
+      {breakpoint === 'xs' || breakpoint === 'sm' || breakpoint === 'md' ? (
+        <NavBarMobile />
+      ) : null}
+
       <Flex wrap="nowrap">
         <FlexItem className="signup-page__flex-item" xs={0}>
           <div className="signup-page__image" />
         </FlexItem>
         <FlexItem>
           <form className="signup-page__form">
-            <Heading className="signup-page__header">Sign Up</Heading>
+            <Heading
+              className={`signup-page__header ${
+                breakpoint === 'xs' ||
+                breakpoint === 'sm' ||
+                breakpoint === 'md'
+                  ? ''
+                  : 'signup-page__header--desktop'
+              }`}
+            >
+              Sign Up
+            </Heading>
             <FormControl tag="fieldset">
               <TextInput
                 floatLabel
@@ -66,9 +84,17 @@ const SignUpPage: FC<SignUpPageProps> = () => {
             </Button>
             <Paragraph fontSize="0.75rem" margin="md 0 0 0">
               Already a member?
-              <Text className="signup-page__text" margin="0 0 0 xs">
-                Log In
-              </Text>
+              <Link href="/account/login">
+                <a tabIndex={-1}>
+                  <Button
+                    className="signup-page__button"
+                    margin="0 0 0 xs"
+                    secondary
+                  >
+                    Log In
+                  </Button>
+                </a>
+              </Link>
             </Paragraph>
           </form>
         </FlexItem>

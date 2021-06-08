@@ -6,7 +6,10 @@
 
   &__header {
     font-size: 1.1rem !important;
-    margin-top: 5rem;
+
+    &--desktop {
+      margin-top: 5rem;
+    }
   }
 
   &__image {
@@ -37,5 +40,12 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  &__button {
+    border: none !important;
+    height: auto !important;
+    padding-inline-end: unset !important;
+    padding-inline-start: unset !important;
   }
 }
