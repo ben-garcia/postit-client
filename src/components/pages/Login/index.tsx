@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import Link from 'next/link';
 import {
   Flex,
   FlexItem,
@@ -7,9 +8,11 @@ import {
   Paragraph,
   Text,
   TextInput,
+  useBreakpoint,
 } from 'supernova-ui';
 
 import { Button } from '../../atoms';
+import NavBarMobile from '../../organisms/NavBar/NavBarMobile';
 
 /**
  * comment out for Next
@@ -21,15 +24,30 @@ import { Button } from '../../atoms';
 interface LoginPageProps {}
 
 const LoginPage: FC<LoginPageProps> = () => {
+  const breakpoint = useBreakpoint();
+
   return (
     <div className="login-page">
+      {breakpoint === 'xs' || breakpoint === 'sm' || breakpoint === 'md' ? (
+        <NavBarMobile />
+      ) : null}
       <Flex wrap="nowrap">
         <FlexItem className="login-page__flex-item" xs={0}>
           <div className="login-page__image" />
         </FlexItem>
         <FlexItem>
           <form className="login-page__form">
-            <Heading className="login-page__header">Login</Heading>
+            <Heading
+              className={`login-page__header ${
+                breakpoint === 'xs' ||
+                breakpoint === 'sm' ||
+                breakpoint === 'md'
+                  ? ''
+                  : 'login-page__header--desktop'
+              }`}
+            >
+              Login
+            </Heading>
             <FormControl tag="fieldset">
               <TextInput
                 floatLabel
@@ -62,9 +80,17 @@ const LoginPage: FC<LoginPageProps> = () => {
             </Paragraph>
             <Paragraph fontSize="0.75rem" margin="md 0 0 0">
               New to Postit?
-              <Text className="signup-modal__text" margin="0 0 0 xs">
-                Sign Up
-              </Text>
+              <Link href="/register">
+                <a tabIndex={-1}>
+                  <Button
+                    className="signup-modal__button"
+                    margin="0 0 0 xs"
+                    secondary
+                  >
+                    Sign Up
+                  </Button>
+                </a>
+              </Link>
             </Paragraph>
           </form>
         </FlexItem>
