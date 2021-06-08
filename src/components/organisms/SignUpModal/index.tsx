@@ -7,7 +7,6 @@ import {
   ModalFooter,
   ModalHeader,
   Paragraph,
-  Text,
   TextInput,
 } from 'supernova-ui';
 
@@ -21,12 +20,22 @@ import { Button } from '../../atoms';
 // import './styles.scss';
 
 interface SignUpModalProps {
+  /**
+   * flag to indicate whether the modal is open
+   */
   isOpen: boolean;
+  /**
+   * Function to call when closing the modal
+   */
   onClose: () => void;
+  /**
+   * function to call when the 'Log In' button is clicked
+   */
+  openLoginModal: () => void;
 }
 
 const SignUpModal: FC<SignUpModalProps> = props => {
-  const { isOpen, onClose } = props;
+  const { isOpen, onClose, openLoginModal } = props;
 
   return (
     <Modal className="signup-modal" isOpen={isOpen} onClose={onClose}>
@@ -66,9 +75,15 @@ const SignUpModal: FC<SignUpModalProps> = props => {
           </FormControl>
           <Paragraph fontSize="0.75rem" margin="md 0 0 0">
             Already a member?
-            <Text className="signup-modal__text" margin="0 0 0 xs">
+            <Button
+              className="signup-modal__button"
+              hoverColor="transparent"
+              onClick={openLoginModal}
+              margin="0 0 0 xs"
+              secondary
+            >
               Log In
-            </Text>
+            </Button>
           </Paragraph>
         </form>
       </ModalBody>
