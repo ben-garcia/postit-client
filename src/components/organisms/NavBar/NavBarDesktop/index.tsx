@@ -41,16 +41,24 @@ const NavBarDesktop: FC<NavBarDesktopProps> = () => {
         </Button>
         <UserMenu />
       </div>
-      {loginModalIsOpen && (
+      {loginModalIsOpen && !signUpModalIsOpen && (
         <LoginModal
           isOpen={loginModalIsOpen}
           onClose={() => setLoginModalIsOpen(false)}
+          openSignUpModal={() => {
+            setLoginModalIsOpen(false);
+            setSignUpModalIsOpen(true);
+          }}
         />
       )}
-      {signUpModalIsOpen && (
+      {signUpModalIsOpen && !loginModalIsOpen && (
         <SignUpModal
           isOpen={signUpModalIsOpen}
           onClose={() => setSignUpModalIsOpen(false)}
+          openLoginModal={() => {
+            setSignUpModalIsOpen(false);
+            setLoginModalIsOpen(true);
+          }}
         />
       )}
     </header>
