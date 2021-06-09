@@ -1,9 +1,10 @@
 .user-menu {
-  &__button {
-    border: none !important;
-    padding-inline-end: unset !important;
-    padding-inline-start: unset !important;
-    padding: 0.5rem 1rem !important;
+  .snui-button.user-menu__button {
+    border: none;
+    box-shadow: unset;
+    padding-inline-end: unset;
+    padding-inline-start: unset;
+    padding: 0.5rem 1rem;
   }
 
   &__group {
