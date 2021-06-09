@@ -55,6 +55,7 @@ const SignUpPage: FC<SignUpPageProps> = () => {
                 label="Email"
                 labelClassName="signup-page__input"
                 size="sm"
+                typeOf="email"
               />
               <FormHelperText>
                 We will use this email to communicate with you.
@@ -77,6 +78,7 @@ const SignUpPage: FC<SignUpPageProps> = () => {
                 label="Password"
                 labelClassName="signup-page__input"
                 size="sm"
+                typeOf="password"
               />
             </FormControl>
             <Button primary margin="1rem 0 0 0">

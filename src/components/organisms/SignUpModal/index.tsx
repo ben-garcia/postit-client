@@ -49,6 +49,7 @@ const SignUpModal: FC<SignUpModalProps> = props => {
               label="Email"
               labelClassName="signup-modal__input"
               size="sm"
+              typeOf="email"
             />
             <FormHelperText>
               We will use this email to communicate with you.
@@ -71,6 +72,7 @@ const SignUpModal: FC<SignUpModalProps> = props => {
               label="Password"
               labelClassName="signup-modal__input"
               size="sm"
+              typeOf="password"
             />
           </FormControl>
           <Paragraph fontSize="0.75rem" margin="md 0 0 0">
