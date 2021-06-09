@@ -62,6 +62,7 @@ const LoginPage: FC<LoginPageProps> = () => {
                 label="Password"
                 labelClassName="login-page__input"
                 size="sm"
+                typeOf="password"
               />
             </FormControl>
             <Button primary margin="1rem 0 0 0">

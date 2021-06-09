@@ -57,6 +57,7 @@ const LoginModal: FC<LoginModalProps> = props => {
               label="Password"
               labelClassName="login-modal__input"
               size="sm"
+              typeOf="password"
             />
           </FormControl>
           <Paragraph fontSize="0.75rem" margin="md 0 0 0">
