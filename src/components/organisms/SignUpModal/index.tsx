@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import {
   FormControl,
   FormHelperText,
@@ -36,9 +36,15 @@ interface SignUpModalProps {
 
 const SignUpModal: FC<SignUpModalProps> = props => {
   const { isOpen, onClose, openLoginModal } = props;
+  const emailInputRef = useRef<HTMLElement | null>(null);
 
   return (
-    <Modal className="signup-modal" isOpen={isOpen} onClose={onClose}>
+    <Modal
+      className="signup-modal"
+      initialFocusRef={emailInputRef}
+      isOpen={isOpen}
+      onClose={onClose}
+    >
       <ModalHeader className="signup-modal__header">Sign Up</ModalHeader>
       <ModalBody className="signup-modal__body">
         <div className="signup-modal__image" />
@@ -48,6 +54,7 @@ const SignUpModal: FC<SignUpModalProps> = props => {
               floatLabel
               label="Email"
               labelClassName="signup-modal__input"
+              ref={emailInputRef}
               size="sm"
               typeOf="email"
             />

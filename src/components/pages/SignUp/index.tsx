@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   Flex,
@@ -25,6 +25,14 @@ interface SignUpPageProps {}
 
 const SignUpPage: FC<SignUpPageProps> = () => {
   const breakpoint = useBreakpoint();
+  const emailInputRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    // set focus on the email input field.
+    if (emailInputRef.current) {
+      emailInputRef.current.focus();
+    }
+  }, [emailInputRef]);
 
   return (
     <div className="signup-page">
@@ -54,6 +62,7 @@ const SignUpPage: FC<SignUpPageProps> = () => {
                 floatLabel
                 label="Email"
                 labelClassName="signup-page__input"
+                ref={emailInputRef}
                 size="sm"
                 typeOf="email"
               />
