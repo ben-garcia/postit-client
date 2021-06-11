@@ -12,10 +12,11 @@ interface SwitchButtonProps {
   'aria-label'?: string;
   isActive: boolean;
   onChange: () => void;
+  tabIndex?: number;
 }
 
 const SwitchButton: FC<SwitchButtonProps> = props => {
-  const { isActive = false, onChange, ...rest } = props;
+  const { isActive = false, onChange, tabIndex = undefined, ...rest } = props;
 
   return (
     <button
@@ -29,6 +30,7 @@ const SwitchButton: FC<SwitchButtonProps> = props => {
           ? 'var(--color-brand-blue100)'
           : 'var(--color-brand-grey100)',
       }}
+      tabIndex={tabIndex}
       type="button"
     >
       <div
