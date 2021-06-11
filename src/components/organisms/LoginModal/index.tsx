@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import {
   FormControl,
   Modal,
@@ -36,9 +36,15 @@ interface LoginModalProps {
 
 const LoginModal: FC<LoginModalProps> = props => {
   const { isOpen, onClose, openSignUpModal } = props;
+  const usernameInputRef = useRef<HTMLElement | null>(null);
 
   return (
-    <Modal className="login-modal" isOpen={isOpen} onClose={onClose}>
+    <Modal
+      className="login-modal"
+      initialFocusRef={usernameInputRef}
+      isOpen={isOpen}
+      onClose={onClose}
+    >
       <ModalHeader className="login-modal__header">Login</ModalHeader>
       <ModalBody className="login-modal__body">
         <div className="login-modal__image" />
@@ -48,6 +54,7 @@ const LoginModal: FC<LoginModalProps> = props => {
               floatLabel
               label="Username"
               labelClassName="login-modal__input"
+              ref={usernameInputRef}
               size="sm"
             />
           </FormControl>
