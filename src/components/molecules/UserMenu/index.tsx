@@ -53,6 +53,7 @@ const UserMenu: FC<UserMenuProps> = () => {
               <SwitchButton
                 isActive={hasNightMode}
                 onChange={() => setHasNightMode(!hasNightMode)}
+                tabIndex={-1}
               />
             </MenuItem>
           </MenuGroup>
