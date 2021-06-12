@@ -3,6 +3,10 @@ import React, { FC, ReactNode } from 'react';
 import { Button as SButton } from 'supernova-ui';
 
 interface ButtonProps {
+  /**
+   * Use as submit button for a form.
+   */
+  asSubmit?: boolean;
   children: ReactNode;
   className?: string;
   color?: string;
@@ -16,6 +20,7 @@ interface ButtonProps {
 
 const Button: FC<ButtonProps> = props => {
   const {
+    asSubmit = false,
     children,
     className,
     color = undefined,
@@ -38,6 +43,7 @@ const Button: FC<ButtonProps> = props => {
 
   return (
     <SButton
+      asSubmitButton={asSubmit}
       backgroundColor={color}
       borderRadius="xxl"
       className={className?.trim().length ? className : undefined}
