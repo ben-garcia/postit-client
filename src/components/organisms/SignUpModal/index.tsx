@@ -6,7 +6,6 @@ import {
   FormHelperText,
   Modal,
   ModalBody,
-  ModalFooter,
   ModalHeader,
   Paragraph,
   TextInput,
@@ -119,7 +118,8 @@ const SignUpModal: FC<SignUpModalProps> = props => {
       [name]: value,
     });
   };
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     console.log('user: ', user);
   };
 
@@ -133,7 +133,7 @@ const SignUpModal: FC<SignUpModalProps> = props => {
       <ModalHeader className="signup-modal__header">Sign Up</ModalHeader>
       <ModalBody className="signup-modal__body">
         <div className="signup-modal__image" />
-        <form className="signup-modal__form">
+        <form className="signup-modal__form" onSubmit={handleSubmit}>
           <FormControl isInvalid={!!errors.email} tag="fieldset">
             <TextInput
               floatLabel
@@ -252,7 +252,10 @@ const SignUpModal: FC<SignUpModalProps> = props => {
             />
             <FormErrorMessage>{errors.password}</FormErrorMessage>
           </FormControl>
-          <Paragraph fontSize="0.75rem" margin="md 0 0 0">
+          <Button asSubmit primary width="100%">
+            Sign Up
+          </Button>
+          <Paragraph fontSize="0.75rem" margin="md 0 xxl 0">
             Already a member?
             <Button
               className="signup-modal__button"
@@ -266,11 +269,6 @@ const SignUpModal: FC<SignUpModalProps> = props => {
           </Paragraph>
         </form>
       </ModalBody>
-      <ModalFooter>
-        <Button asSubmit onClick={handleSubmit} primary>
-          Sign Up
-        </Button>
-      </ModalFooter>
     </Modal>
   );
 };
