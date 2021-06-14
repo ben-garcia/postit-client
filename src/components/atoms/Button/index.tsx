@@ -16,6 +16,7 @@ interface ButtonProps {
   onClick?: () => void;
   primary?: boolean;
   secondary?: boolean;
+  width?: string;
 }
 
 const Button: FC<ButtonProps> = props => {
@@ -30,6 +31,7 @@ const Button: FC<ButtonProps> = props => {
     onClick,
     primary,
     secondary,
+    width,
   } = props;
   const buttonType = React.useMemo(() => {
     if (primary && !secondary) {
@@ -52,6 +54,7 @@ const Button: FC<ButtonProps> = props => {
       margin={margin}
       onClick={onClick}
       variant={buttonType}
+      width={width}
     >
       {children}
     </SButton>
