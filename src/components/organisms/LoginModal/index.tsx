@@ -3,7 +3,6 @@ import {
   FormControl,
   Modal,
   ModalBody,
-  ModalFooter,
   ModalHeader,
   Paragraph,
   Text,
@@ -67,6 +66,9 @@ const LoginModal: FC<LoginModalProps> = props => {
               typeOf="password"
             />
           </FormControl>
+          <Button asSubmit primary width="100%">
+            Log In
+          </Button>
           <Paragraph fontSize="0.75rem" margin="md 0 0 0">
             Forgot your
             <Text className="login-modal__text" margin="0 xs">
@@ -78,7 +80,7 @@ const LoginModal: FC<LoginModalProps> = props => {
             </Text>
             ?
           </Paragraph>
-          <Paragraph fontSize="0.75rem" margin="md 0 0 0">
+          <Paragraph fontSize="0.75rem" margin="md 0 xxl 0">
             New to Postit?
             <Button
               className="login-modal__button"
@@ -92,9 +94,6 @@ const LoginModal: FC<LoginModalProps> = props => {
           </Paragraph>
         </form>
       </ModalBody>
-      <ModalFooter>
-        <Button primary>Log In</Button>
-      </ModalFooter>
     </Modal>
   );
 };
