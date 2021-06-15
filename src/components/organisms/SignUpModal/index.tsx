@@ -12,6 +12,8 @@ import {
 } from 'supernova-ui';
 
 import { Button } from '../../atoms';
+import { useForm } from '../../../hooks';
+import { signUpSchema } from '../../../utils';
 
 /**
  * comment out for Next
@@ -36,6 +38,7 @@ interface SignUpModalProps {
 }
 
 interface User {
+  [k: string]: string;
   email: string;
   password: string;
   username: string;
@@ -44,84 +47,20 @@ interface User {
 const SignUpModal: FC<SignUpModalProps> = props => {
   const { isOpen, onClose, openLoginModal } = props;
   const emailInputRef = useRef<HTMLElement | null>(null);
-
-  const [user, setUser] = React.useState<User>({
-    email: '',
-    password: '',
-    username: '',
-  });
-  const [errors, setErrors] = React.useState<User>({
-    email: '',
-    password: '',
-    username: '',
-  });
-
-  const validate = (name: string, value: string) => {
-    if (name === 'email') {
-      if (!value.trim().length) {
-        setErrors({
-          ...errors,
-          email: '',
-        });
-      } else if (user.email.trim().length) {
-        if (!/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(value)) {
-          setErrors({
-            ...errors,
-            email: 'Please fix your email to continue.',
-          });
-        } else {
-          setErrors({
-            ...errors,
-            email: '',
-          });
-        }
-      }
-    } else if (name === 'username') {
-      if (value.trim().length < 3 || value.trim().length > 20) {
-        setErrors({
-          ...errors,
-          username: 'Username must be between 3 and 20 characters.',
-        });
-      } else {
-        setErrors({
-          ...errors,
-          username: '',
-        });
-      }
-    } else if (name === 'password') {
-      if (value.trim().length < 8) {
-        setErrors({
-          ...errors,
-          password: 'Password must be at least 8 characters long.',
-        });
-      } else {
-        setErrors({
-          ...errors,
-          password: '',
-        });
-      }
-    }
-  };
-
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    validate(name, value);
-  };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    validate(name, value);
-
-    setUser({
-      ...user,
-      [name]: value,
-    });
-  };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('user: ', user);
-  };
+  const {
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    values: user,
+  } = useForm<User>(
+    {
+      email: '',
+      password: '',
+      username: '',
+    },
+    signUpSchema
+  );
 
   return (
     <Modal
