@@ -33,6 +33,18 @@
     text-transform: uppercase;
   }
 
+  &__icon {
+    color: var(--color-brand-red100);
+    font-size: 1rem;
+    margin: 0.5rem 0.5rem 0 0;
+    transform: scale(0);
+    transition: transform 0.4 ease;
+
+    &--visible {
+      transform: scale(1);
+    }
+  }
+
   &__text {
     color: var(--color-brand-blue100);
     cursor: pointer;

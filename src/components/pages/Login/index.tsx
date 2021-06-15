@@ -1,8 +1,10 @@
 import React, { FC, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
+  CheckmarkIcon,
   Flex,
   FlexItem,
+  FormErrorMessage,
   FormControl,
   Heading,
   Paragraph,
@@ -13,6 +15,8 @@ import {
 
 import { Button } from '../../atoms';
 import NavBarMobile from '../../organisms/NavBar/NavBarMobile';
+import { useForm } from '../../../hooks';
+import { loginSchema } from '../../../utils';
 
 /**
  * comment out for Next
@@ -23,9 +27,28 @@ import NavBarMobile from '../../organisms/NavBar/NavBarMobile';
 
 interface LoginPageProps {}
 
+interface User {
+  [k: string]: string;
+  password: string;
+  username: string;
+}
+
 const LoginPage: FC<LoginPageProps> = () => {
   const breakpoint = useBreakpoint();
   const usernameInputRef = useRef<HTMLElement | null>(null);
+  const {
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    values: user,
+  } = useForm<User>(
+    {
+      password: '',
+      username: '',
+    },
+    loginSchema
+  );
 
   useEffect(() => {
     // set focus on the email input field.
@@ -44,7 +67,7 @@ const LoginPage: FC<LoginPageProps> = () => {
           <div className="login-page__image" />
         </FlexItem>
         <FlexItem>
-          <form className="login-page__form">
+          <form className="login-page__form" onSubmit={handleSubmit}>
             <Heading
               className={`login-page__header ${
                 breakpoint === 'xs' ||
@@ -56,23 +79,79 @@ const LoginPage: FC<LoginPageProps> = () => {
             >
               Login
             </Heading>
-            <FormControl tag="fieldset">
+            <FormControl isInvalid={!!errors.username} tag="fieldset">
               <TextInput
                 floatLabel
                 label="Username"
                 labelClassName="login-page__input"
+                name="username"
+                onBlur={handleBlur}
+                onChange={handleChange}
                 ref={usernameInputRef}
+                rightIcon={
+                  errors.username ? (
+                    <div
+                      className={`login-modal__icon${
+                        errors.username ? ' login-modal__icon--visible' : ''
+                      }`}
+                    >
+                      !
+                    </div>
+                  ) : (
+                    <CheckmarkIcon
+                      className={`login-modal__icon${
+                        !errors.username &&
+                        user.username.trim().length >= 3 &&
+                        user.username.trim().length <= 20
+                          ? ' login-modal__icon--visible'
+                          : ''
+                      }`}
+                      fill="green"
+                      margin="0.6rem 0.3rem 0 0"
+                      size="0.7rem"
+                    />
+                  )
+                }
                 size="sm"
+                value={user.username}
               />
+              <FormErrorMessage>{errors.username}</FormErrorMessage>
             </FormControl>
-            <FormControl tag="fieldset">
+            <FormControl isInvalid={!!errors.password} tag="fieldset">
               <TextInput
                 floatLabel
                 label="Password"
                 labelClassName="login-page__input"
+                name="password"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                rightIcon={
+                  errors.password ? (
+                    <div
+                      className={`login-page__icon${
+                        errors.password ? ' login-page__icon--visible' : ''
+                      }`}
+                    >
+                      !
+                    </div>
+                  ) : (
+                    <CheckmarkIcon
+                      className={`login-page__icon${
+                        !errors.password && user.password.trim().length >= 8
+                          ? ' signup-page__icon--visible'
+                          : ''
+                      }`}
+                      fill="green"
+                      margin="0.6rem 0.3rem 0 0"
+                      size="0.7rem"
+                    />
+                  )
+                }
                 size="sm"
                 typeOf="password"
+                value={user.password}
               />
+              <FormErrorMessage>{errors.password}</FormErrorMessage>
             </FormControl>
             <Button primary margin="1rem 0 0 0">
               Log In
