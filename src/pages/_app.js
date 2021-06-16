@@ -1,3 +1,5 @@
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+
 import '../sass/main.scss';
 import '../components/atoms/SwitchButton/styles.scss';
 import '../components/molecules/UserMenu/styles.scss';
@@ -10,8 +12,18 @@ import '../components/organisms/SignUpModal/styles.scss';
 import '../components/pages/Login/styles.scss';
 import '../components/pages/SignUp/styles.scss';
 
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache(),
+  // credentials: 'include',
+});
+
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <ApolloProvider client={client}>
+      <Component {...pageProps} />
+    </ApolloProvider>
+  );
 }
 
 export default MyApp;
