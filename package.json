@@ -9,6 +9,10 @@
     "@babel/core": "^7.12.17",
     "@commitlint/cli": "^12.0.0",
     "@commitlint/config-conventional": "^12.0.0",
+    "@graphql-codegen/cli": "^1.21.5",
+    "@graphql-codegen/typescript": "^1.22.1",
+    "@graphql-codegen/typescript-operations": "^1.18.0",
+    "@graphql-codegen/typescript-react-apollo": "^2.2.5",
     "@storybook/addon-a11y": "^6.2.9",
     "@storybook/addon-actions": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.9",
@@ -49,7 +53,9 @@
     "webpack": "4.4.0"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.20",
     "@zeit/next-sass": "^1.0.1",
+    "graphql": "^15.5.0",
     "next": "^10.2.3",
     "node-sass": "^5.0.0",
     "react": "17.0.1",
@@ -63,6 +69,7 @@
     "format": "prettier --write 'src/**/*.{ts,tsx,json,md}'",
     "lint": "eslint . --ext js,ts,tsx --fix",
     "lint:scss": "stylelint --fix 'src/**/*.scss'",
+    "generate": "graphql-codegen --config ./codegen.yml",
     "postinstall": "husky install",
     "start": "next start",
     "storybook": "start-storybook -p 6006",
