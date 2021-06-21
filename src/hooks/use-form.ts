@@ -138,16 +138,19 @@ const useForm = <T extends AnyObject>(
       [name]: value,
     });
   };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const setError = (property: keyof T, errorMessage: string) => {
+    setErrors(prev => ({
+      ...prev,
+      [property]: errorMessage,
+    }));
   };
 
   return {
     errors,
-    values,
     handleBlur,
     handleChange,
-    handleSubmit,
+    setError,
+    values,
   };
 };
 
