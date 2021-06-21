@@ -1,4 +1,4 @@
-import React, { FC, useRef } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import {
   CheckmarkIcon,
   FormControl,
@@ -12,8 +12,12 @@ import {
 } from 'supernova-ui';
 
 import { Button } from '../../atoms';
-import { useForm } from '../../../hooks';
+import { useDebounce, useForm } from '../../../hooks';
 import { signUpSchema } from '../../../utils';
+import {
+  useIsUsernameUniqueLazyQuery,
+  useSignUpMutation,
+} from '../../../generated/graphql';
 
 /**
  * comment out for Next
@@ -51,7 +55,7 @@ const SignUpModal: FC<SignUpModalProps> = props => {
     errors,
     handleBlur,
     handleChange,
-    handleSubmit,
+    setError,
     values: user,
   } = useForm<User>(
     {
@@ -61,6 +65,52 @@ const SignUpModal: FC<SignUpModalProps> = props => {
     },
     signUpSchema
   );
+  const [signUp] = useSignUpMutation();
+  const [isUsernameUnique, { data }] = useIsUsernameUniqueLazyQuery();
+  const debounceValue = useDebounce<string>(user.username, () => {});
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!errors.email && !errors.username && !errors.password) {
+      const signUpUser: Partial<User> = {
+        ...user,
+      };
+
+      if (user.email === '') {
+        // make sure that email is not send in the request
+        // when email is omitted.
+        signUpUser.email = undefined;
+      }
+      try {
+        const res = await signUp({
+          variables: signUpUser as User,
+        });
+        console.log('response: ', res);
+      } catch (error) {
+        // eslint-disable-next-line
+        console.log('signUp error: ', error);
+      }
+    }
+  };
+
+  // send the request
+  useEffect(() => {
+    if (debounceValue.trim().length >= 3 && debounceValue.trim().length <= 20) {
+      isUsernameUnique({
+        variables: {
+          username: debounceValue,
+        },
+      });
+    }
+    // if the username is not unique
+    // set the error message
+    if (data?.isUsernameUnique === false) {
+      setError('username', 'This username is already taken.');
+    } else {
+      // otherwise reset the username erorr field
+      setError('username', '');
+    }
+  }, [debounceValue, data]);
 
   return (
     <Modal
