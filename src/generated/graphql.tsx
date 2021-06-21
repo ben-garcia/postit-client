@@ -62,7 +62,7 @@ export type GeneralPreferences = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  signUp: Scalars['Boolean'];
+  signUp: SignUpResponse;
 };
 
 export type MutationSignUpArgs = {
@@ -135,16 +135,35 @@ export type QueryIsUsernameUniqueArgs = {
   username: Scalars['String'];
 };
 
+export type SignUpError = {
+  __typename?: 'SignUpError';
+  constraints: SignUpErrorConstraints;
+  field: Scalars['String'];
+};
+
+export type SignUpErrorConstraints = {
+  __typename?: 'SignUpErrorConstraints';
+  isEmail?: Maybe<Scalars['String']>;
+  maxLength?: Maybe<Scalars['String']>;
+  minLength?: Maybe<Scalars['String']>;
+};
+
 export type SignUpInput = {
-  email: Scalars['String'];
+  email?: Maybe<Scalars['String']>;
   username: Scalars['String'];
   password: Scalars['String'];
+};
+
+export type SignUpResponse = {
+  __typename?: 'SignUpResponse';
+  errors?: Maybe<Array<SignUpError>>;
+  created?: Maybe<Scalars['Boolean']>;
 };
 
 export type User = {
   __typename?: 'User';
   id: Scalars['ID'];
-  email: Scalars['String'];
+  email?: Maybe<Scalars['String']>;
   emailNotificationPreferences?: Maybe<EmailNotificationPreferences>;
   generalPreferences?: Maybe<GeneralPreferences>;
   notificationPreferences?: Maybe<NotificationPreferences>;
@@ -155,15 +174,28 @@ export type User = {
 };
 
 export type SignUpMutationVariables = Exact<{
-  email: Scalars['String'];
+  email?: Maybe<Scalars['String']>;
   username: Scalars['String'];
   password: Scalars['String'];
 }>;
 
-export type SignUpMutation = { __typename?: 'Mutation' } & Pick<
-  Mutation,
-  'signUp'
->;
+export type SignUpMutation = { __typename?: 'Mutation' } & {
+  signUp: { __typename?: 'SignUpResponse' } & Pick<
+    SignUpResponse,
+    'created'
+  > & {
+      errors?: Maybe<
+        Array<
+          { __typename?: 'SignUpError' } & Pick<SignUpError, 'field'> & {
+              constraints: { __typename?: 'SignUpErrorConstraints' } & Pick<
+                SignUpErrorConstraints,
+                'isEmail' | 'maxLength' | 'minLength'
+              >;
+            }
+        >
+      >;
+    };
+};
 
 export type IsUsernameUniqueQueryVariables = Exact<{
   username: Scalars['String'];
@@ -175,14 +207,24 @@ export type IsUsernameUniqueQuery = { __typename?: 'Query' } & Pick<
 >;
 
 export const SignUpDocument = gql`
-  mutation SignUp($email: String!, $username: String!, $password: String!) {
+  mutation SignUp($email: String, $username: String!, $password: String!) {
     signUp(
       createUserData: {
         email: $email
         username: $username
         password: $password
       }
-    )
+    ) {
+      errors {
+        field
+        constraints {
+          isEmail
+          maxLength
+          minLength
+        }
+      }
+      created
+    }
   }
 `;
 export type SignUpMutationFn = Apollo.MutationFunction<

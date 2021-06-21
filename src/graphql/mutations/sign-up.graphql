@@ -1,9 +1,19 @@
-mutation SignUp($email: String!, $username: String! $password: String!) {
+mutation SignUp($email: String, $username: String! $password: String!) {
   signUp(
     createUserData: {
       email: $email 
       username: $username 
       password: $password 
     }
-  )
+  ) {
+    errors {
+      field
+      constraints {
+        isEmail
+        maxLength
+        minLength
+      }
+    }
+    created
+  }
 }
