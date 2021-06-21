@@ -1,4 +1,4 @@
-import React, { FC, useRef } from 'react';
+import React, { FC, FormEvent, useRef } from 'react';
 import {
   CheckmarkIcon,
   FormErrorMessage,
@@ -46,19 +46,16 @@ interface User {
 const LoginModal: FC<LoginModalProps> = props => {
   const { isOpen, onClose, openSignUpModal } = props;
   const usernameInputRef = useRef<HTMLElement | null>(null);
-  const {
-    errors,
-    handleBlur,
-    handleChange,
-    handleSubmit,
-    values: user,
-  } = useForm<User>(
+  const { errors, handleBlur, handleChange, values: user } = useForm<User>(
     {
       password: '',
       username: '',
     },
     loginSchema
   );
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
 
   return (
     <Modal

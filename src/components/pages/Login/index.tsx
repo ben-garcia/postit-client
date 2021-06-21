@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, FormEvent, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   CheckmarkIcon,
@@ -36,19 +36,16 @@ interface User {
 const LoginPage: FC<LoginPageProps> = () => {
   const breakpoint = useBreakpoint();
   const usernameInputRef = useRef<HTMLElement | null>(null);
-  const {
-    errors,
-    handleBlur,
-    handleChange,
-    handleSubmit,
-    values: user,
-  } = useForm<User>(
+  const { errors, handleBlur, handleChange, values: user } = useForm<User>(
     {
       password: '',
       username: '',
     },
     loginSchema
   );
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
 
   useEffect(() => {
     // set focus on the email input field.

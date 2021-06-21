@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, FormEvent, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   CheckmarkIcon,
@@ -37,13 +37,7 @@ interface User {
 const SignUpPage: FC<SignUpPageProps> = () => {
   const breakpoint = useBreakpoint();
   const emailInputRef = useRef<HTMLElement | null>(null);
-  const {
-    errors,
-    handleBlur,
-    handleChange,
-    handleSubmit,
-    values: user,
-  } = useForm<User>(
+  const { errors, handleBlur, handleChange, values: user } = useForm<User>(
     {
       email: '',
       password: '',
@@ -51,6 +45,9 @@ const SignUpPage: FC<SignUpPageProps> = () => {
     },
     signUpSchema
   );
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
 
   useEffect(() => {
     // set focus on the email input field.
