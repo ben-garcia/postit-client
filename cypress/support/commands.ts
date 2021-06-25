@@ -1,7 +1,7 @@
 interface User {
-	email?: string;
-	username: string;
-	password: string;
+  email?: string;
+  username: string;
+  password: string;
 }
 
 Cypress.Commands.add('clearDB', () => {
@@ -19,8 +19,8 @@ Cypress.Commands.add('clearDB', () => {
   });
 });
 
-Cypress.Commands.add('signUpUser', ({email, username, password}: User) => {
-	const query = `
+Cypress.Commands.add('signUpUser', ({ email, username, password }: User) => {
+  const query = `
 		mutation {
 			testSignUp(
 				createUserData: {
@@ -39,5 +39,3 @@ Cypress.Commands.add('signUpUser', ({email, username, password}: User) => {
     url: 'localhost:4000/graphql',
   });
 });
-
-
