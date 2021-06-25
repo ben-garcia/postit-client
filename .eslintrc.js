@@ -15,7 +15,8 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       parserOptions: {
-        project: ['tsconfig.json'],
+        // comment out to fix errors messages from cypress
+        // project: ['tsconfig.json'],
       },
     },
   ],
