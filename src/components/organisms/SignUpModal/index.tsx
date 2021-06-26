@@ -67,7 +67,7 @@ const SignUpModal: FC<SignUpModalProps> = props => {
   );
   const [signUp] = useSignUpMutation();
   const [isUsernameUnique, { data }] = useIsUsernameUniqueLazyQuery();
-  const debounceValue = useDebounce<string>(user.username, () => {});
+  const debounceValue = useDebounce<string>(user.username);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
