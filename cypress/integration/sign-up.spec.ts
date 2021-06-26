@@ -6,6 +6,14 @@ context('Sign Up', () => {
 
     cy.clearDB().visit('/').contains('Sign Up').click();
 
+    cy.intercept('POST', '/graphql', req => {
+      if (req.body.operationName === 'SignUp') {
+        req.alias = 'signUpMutation';
+      }
+    });
+
+    cy.getCookies().should('be.empty');
+
     cy.get('input[name="email"]').type(email).should('have.value', email);
 
     cy.get('input[name="username"]')
@@ -17,6 +25,11 @@ context('Sign Up', () => {
       .should('have.value', password);
 
     cy.get('button[type="submit"]').click();
+
+    cy.wait('@signUpMutation');
+
+    cy.getCookie('session-access-token').should('exist');
+    cy.getCookie('session-refresh-token').should('exist');
   });
 
   it('should show error message when username is already taken', () => {
