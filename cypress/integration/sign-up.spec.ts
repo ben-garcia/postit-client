@@ -5,6 +5,9 @@ context('Sign Up', () => {
       const username = 'benben';
       const password = 'password';
 
+      // sign up modal should be not be visible to the user
+      cy.get('section[aria-modal="true"]').should('not.exist');
+
       cy.clearDB().visit('/').contains('Sign Up').click();
 
       cy.intercept('POST', '/graphql', req => {
@@ -14,6 +17,9 @@ context('Sign Up', () => {
       });
 
       cy.getCookies().should('be.empty');
+
+      // sign up modal should be visible to the user
+      cy.get('section[aria-modal="true"]').should('exist');
 
       cy.get('input[name="email"]').type(email).should('have.value', email);
 
@@ -31,6 +37,9 @@ context('Sign Up', () => {
 
       cy.getCookie('session-access-token').should('exist');
       cy.getCookie('session-refresh-token').should('exist');
+
+      // sign up modal should be not be visible to the user
+      cy.get('section[aria-modal="true"]').should('not.exist');
     });
 
     it('should show error message when username is already taken', () => {
@@ -73,6 +82,8 @@ context('Sign Up', () => {
         }
       });
 
+      cy.url().should('eq', 'http://localhost:3000/register');
+
       cy.getCookies().should('be.empty');
 
       cy.get('input[name="email"]').type(email).should('have.value', email);
@@ -91,6 +102,8 @@ context('Sign Up', () => {
 
       cy.getCookie('session-access-token').should('exist');
       cy.getCookie('session-refresh-token').should('exist');
+
+      cy.url().should('eq', 'http://localhost:3000/');
     });
 
     it('should show error message when username is already taken', () => {
