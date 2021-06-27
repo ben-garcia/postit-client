@@ -12,6 +12,7 @@ interface ButtonProps {
   color?: string;
   hoverColor?: string;
   leftIcon?: ReactNode;
+  isLoading?: boolean;
   margin?: string;
   onClick?: () => void;
   primary?: boolean;
@@ -27,6 +28,7 @@ const Button: FC<ButtonProps> = props => {
     color = undefined,
     hoverColor = undefined,
     leftIcon = undefined,
+    isLoading,
     margin,
     onClick,
     primary,
@@ -51,6 +53,7 @@ const Button: FC<ButtonProps> = props => {
       className={className?.trim().length ? className : undefined}
       hoverBackgroundColor={hoverColor}
       leftIcon={leftIcon}
+      isLoading={isLoading}
       margin={margin}
       onClick={onClick}
       variant={buttonType}
