@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import {
   CheckmarkIcon,
   FormControl,
@@ -68,6 +68,7 @@ const SignUpModal: FC<SignUpModalProps> = props => {
   const [signUp] = useSignUpMutation();
   const [isUsernameUnique, { data }] = useIsUsernameUniqueLazyQuery();
   const debounceValue = useDebounce<string>(user.username);
+  const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -82,10 +83,19 @@ const SignUpModal: FC<SignUpModalProps> = props => {
         signUpUser.email = undefined;
       }
       try {
+        // trigger the loading icon
+        setIsLoading(true);
+
         const res = await signUp({
           variables: signUpUser as User,
         });
-        console.log('response: ', res);
+
+        if (res.data?.signUp.created) {
+          // close the sign up modal
+          onClose();
+        } else if (res.data?.signUp.errors) {
+          setIsLoading(false);
+        }
       } catch (error) {
         // eslint-disable-next-line
         console.log('signUp error: ', error);
@@ -241,7 +251,7 @@ const SignUpModal: FC<SignUpModalProps> = props => {
             />
             <FormErrorMessage>{errors.password}</FormErrorMessage>
           </FormControl>
-          <Button asSubmit primary width="100%">
+          <Button asSubmit isLoading={isLoading} primary width="100%">
             Sign Up
           </Button>
           <Paragraph fontSize="0.75rem" margin="md 0 xxl 0">

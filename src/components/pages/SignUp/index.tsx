@@ -1,5 +1,6 @@
-import React, { FC, FormEvent, useEffect, useRef } from 'react';
+import React, { FC, FormEvent, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import {
   CheckmarkIcon,
   Flex,
@@ -40,6 +41,7 @@ interface User {
 
 const SignUpPage: FC<SignUpPageProps> = () => {
   const breakpoint = useBreakpoint();
+  const router = useRouter();
   const emailInputRef = useRef<HTMLElement | null>(null);
   const {
     errors,
@@ -58,6 +60,7 @@ const SignUpPage: FC<SignUpPageProps> = () => {
   const [signUp] = useSignUpMutation();
   const [isUsernameUnique, { data }] = useIsUsernameUniqueLazyQuery();
   const debounceValue = useDebounce<string>(user.username);
+  const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -72,10 +75,19 @@ const SignUpPage: FC<SignUpPageProps> = () => {
         signUpUser.email = undefined;
       }
       try {
+        // trigger the loading icon
+        setIsLoading(true);
+
         const res = await signUp({
           variables: signUpUser as User,
         });
-        console.log('response: ', res);
+
+        if (res.data?.signUp.created) {
+          // redirect to the home page
+          router.replace('/');
+        } else if (res.data?.signUp.errors) {
+          setIsLoading(false);
+        }
       } catch (error) {
         // eslint-disable-next-line
         console.log('signUp error: ', error);
@@ -251,7 +263,7 @@ const SignUpPage: FC<SignUpPageProps> = () => {
               />
               <FormErrorMessage>{errors.password}</FormErrorMessage>
             </FormControl>
-            <Button asSubmit primary margin="1rem 0 0 0">
+            <Button asSubmit isLoading={isLoading} primary margin="1rem 0 0 0">
               Sign Up
             </Button>
             <Paragraph fontSize="0.75rem" margin="md 0 0 0">
