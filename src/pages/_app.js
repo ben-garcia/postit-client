@@ -1,5 +1,7 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
+import { UserProvider } from '../contexts';
+
 import '../sass/main.scss';
 import '../components/atoms/SwitchButton/styles.scss';
 import '../components/molecules/UserMenu/styles.scss';
@@ -21,7 +23,9 @@ const client = new ApolloClient({
 function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>
-      <Component {...pageProps} />
+      <UserProvider>
+        <Component {...pageProps} />
+      </UserProvider>
     </ApolloProvider>
   );
 }

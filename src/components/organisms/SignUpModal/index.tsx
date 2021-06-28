@@ -12,7 +12,7 @@ import {
 } from 'supernova-ui';
 
 import { Button } from '../../atoms';
-import { useDebounce, useForm } from '../../../hooks';
+import { useDebounce, useForm, useUser } from '../../../hooks';
 import { signUpSchema } from '../../../utils';
 import {
   useIsUsernameUniqueLazyQuery,
@@ -69,6 +69,7 @@ const SignUpModal: FC<SignUpModalProps> = props => {
   const [isUsernameUnique, { data }] = useIsUsernameUniqueLazyQuery();
   const debounceValue = useDebounce<string>(user.username);
   const [isLoading, setIsLoading] = useState(false);
+  const { dispatch } = useUser();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -91,6 +92,10 @@ const SignUpModal: FC<SignUpModalProps> = props => {
         });
 
         if (res.data?.signUp.created) {
+          // update the user context
+          dispatch({
+            type: 'USER_LOGGED_IN',
+          });
           // close the sign up modal
           onClose();
         } else if (res.data?.signUp.errors) {
