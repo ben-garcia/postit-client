@@ -5,6 +5,12 @@
     padding-inline-end: unset;
     padding-inline-start: unset;
     padding: 0.5rem 1rem;
+
+    &--loggedin {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   &__group {
@@ -18,7 +24,13 @@
   }
 
   &__inner {
+    align-items: center;
     display: flex;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
   }
 
   &__icon {

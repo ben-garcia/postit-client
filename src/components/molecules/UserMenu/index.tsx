@@ -10,10 +10,17 @@ import {
   MenuGroup,
   MenuItem,
   MenuList,
+  Text,
   UserIcon,
 } from 'supernova-ui';
 
-import { CoinIcon, PremiumShieldIcon, SwitchButton } from '../../atoms';
+import {
+  CoinIcon,
+  KarmaIcon,
+  PremiumShieldIcon,
+  SwitchButton,
+} from '../../atoms';
+import { useUser } from '../../../hooks';
 
 /**
  * comment out for Next
@@ -27,20 +34,64 @@ interface UserMenuProps {}
 const UserMenu: FC<UserMenuProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hasNightMode, setHasNightMode] = useState(false);
+  const [onlineStatusIsActive, setOnlineStatusIsActive] = useState(true);
+  const {
+    state: { user },
+  } = useUser();
 
   return (
     <div className="user-menu">
       <Menu isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <MenuButton
-          className="user-menu__button"
+          className={`user-menu__button${
+            user.isLoggedIn ? ' user-menu__button--loggedin' : ''
+          }`}
           onClick={() => setIsOpen(true)}
           padding="0"
           variant="outline"
         >
-          <UserIcon margin="0 0.3rem 0 0" size="1.1rem" />
-          <ChevronDownIcon size="0.6rem" />
+          {user.isLoggedIn && (
+            <>
+              <div className="user-menu__inner">
+                <UserIcon margin="0 0.3rem 0 0" size="1.1rem" />
+                <div className="user-menu__container">
+                  <Text fontSize="12px">{user.username}</Text>
+                  <div>
+                    <KarmaIcon
+                      fill="var(--color-brand-orange100)"
+                      margin="0 0.2rem 0 0"
+                      size="0.8rem"
+                    />
+                    <Text fontSize="12px">0 karma</Text>
+                  </div>
+                </div>
+              </div>
+              <ChevronDownIcon size="0.6rem" />
+            </>
+          )}
+          {!user.isLoggedIn && (
+            <>
+              <UserIcon margin="0 0.3rem 0 0" size="1.1rem" />
+              <ChevronDownIcon size="0.6rem" />
+            </>
+          )}
         </MenuButton>
-        <MenuList position="right" width="216px">
+        <MenuList position="right" width="220px">
+          {user.isLoggedIn && (
+            <MenuGroup className="user-menu__group" title="My Stuff">
+              <MenuItem className="user-menu__item space-between">
+                <div className="user-menu__inner">Online Status</div>
+                <SwitchButton
+                  isActive={onlineStatusIsActive}
+                  onChange={() => setOnlineStatusIsActive(!hasNightMode)}
+                  tabIndex={-1}
+                />
+              </MenuItem>
+              <MenuItem>Profile</MenuItem>
+              <MenuItem>User Settings</MenuItem>
+            </MenuGroup>
+          )}
+
           <MenuGroup className="user-menu__group" title="view options">
             <MenuItem
               className="user-menu__item space-between"
@@ -70,10 +121,18 @@ const UserMenu: FC<UserMenuProps> = () => {
               <HelpIcon className="user-menu__icon" size="1.5rem" />
               Help Center
             </MenuItem>
-            <MenuItem className="user-menu__item">
-              <LogoutIcon className="user-menu__icon" size="1.5rem" />
-              Log In / Sign Up
-            </MenuItem>
+            {!user.isLoggedIn && (
+              <MenuItem className="user-menu__item">
+                <LogoutIcon className="user-menu__icon" size="1.5rem" />
+                Log In / Sign Up
+              </MenuItem>
+            )}
+            {user.isLoggedIn && (
+              <MenuItem className="user-menu__item">
+                <LogoutIcon className="user-menu__icon" size="1.5rem" />
+                Log Out
+              </MenuItem>
+            )}
           </MenuGroup>
         </MenuList>
       </Menu>
