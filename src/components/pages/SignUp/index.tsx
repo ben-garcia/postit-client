@@ -16,7 +16,7 @@ import {
 
 import { Button } from '../../atoms';
 import NavBarMobile from '../../organisms/NavBar/NavBarMobile';
-import { useDebounce, useForm } from '../../../hooks';
+import { useDebounce, useForm, useUser } from '../../../hooks';
 import { signUpSchema } from '../../../utils';
 import {
   useIsUsernameUniqueLazyQuery,
@@ -61,6 +61,7 @@ const SignUpPage: FC<SignUpPageProps> = () => {
   const [isUsernameUnique, { data }] = useIsUsernameUniqueLazyQuery();
   const debounceValue = useDebounce<string>(user.username);
   const [isLoading, setIsLoading] = useState(false);
+  const { dispatch } = useUser();
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -83,6 +84,19 @@ const SignUpPage: FC<SignUpPageProps> = () => {
         });
 
         if (res.data?.signUp.created) {
+          // save to local storage
+          localStorage.setItem(
+            'user',
+            JSON.stringify({
+              username: user.username,
+            })
+          );
+          // update the user context
+          dispatch({
+            type: 'USER_LOGGED_IN',
+            payload: user.username,
+          });
+
           // redirect to the home page
           router.replace('/');
         } else if (res.data?.signUp.errors) {

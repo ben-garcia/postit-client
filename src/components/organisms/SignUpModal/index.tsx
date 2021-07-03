@@ -92,9 +92,17 @@ const SignUpModal: FC<SignUpModalProps> = props => {
         });
 
         if (res.data?.signUp.created) {
+          // save to local storage
+          localStorage.setItem(
+            'user',
+            JSON.stringify({
+              username: user.username,
+            })
+          );
           // update the user context
           dispatch({
             type: 'USER_LOGGED_IN',
+            payload: user.username,
           });
           // close the sign up modal
           onClose();
