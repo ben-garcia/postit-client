@@ -33,13 +33,19 @@ context('Sign Up', () => {
 
       cy.get('button[type="submit"]').click();
 
-      cy.wait('@signUpMutation');
+      cy.wait('@signUpMutation').should(() => {
+        // should contain the username
+        expect(localStorage.getItem('user')).to.matches(/(?=.*username)/);
+      });
 
       cy.getCookie('session-access-token').should('exist');
       cy.getCookie('session-refresh-token').should('exist');
 
       // sign up modal should be not be visible to the user
       cy.get('section[aria-modal="true"]').should('not.exist');
+
+      // check for username after sign up
+      cy.get('.user-menu__username').should('have.text', username);
     });
 
     it('should show error message when username is already taken', () => {
@@ -98,12 +104,20 @@ context('Sign Up', () => {
 
       cy.get('button[type="submit"]').click();
 
-      cy.wait('@signUpMutation');
+      cy.wait('@signUpMutation').should(() => {
+        // should contain the username
+        expect(localStorage.getItem('user')).to.matches(/(?=.*username)/);
+      });
 
       cy.getCookie('session-access-token').should('exist');
       cy.getCookie('session-refresh-token').should('exist');
 
       cy.url().should('eq', 'http://localhost:3000/');
+
+      cy.get('.hamburger-button').click();
+
+      // check for the username
+      cy.get('.mobile-menu__username').should('have.text', username);
     });
 
     it('should show error message when username is already taken', () => {
