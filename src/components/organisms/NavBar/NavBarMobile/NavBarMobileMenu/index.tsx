@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { ChevronDownIcon, InfoIcon, SettingsIcon, Text } from 'supernova-ui';
 import { Button, RisingIcon, SearchBar } from '../../../../atoms';
+import { useUser } from '../../../../../hooks';
 
 /**
  * comment out for Next
@@ -14,10 +15,17 @@ import { Button, RisingIcon, SearchBar } from '../../../../atoms';
 interface NavBarMobileMenuProps {}
 
 const NavBarMobileMenu: FC<NavBarMobileMenuProps> = () => {
+  const {
+    state: { user },
+  } = useUser();
+
   return (
     <div className="mobile-menu">
       <SearchBar className="mobile-menu__searchbar" fill="white" />
       <div className="menu-list">
+        {user.isLoggedIn && (
+          <Text className="mobile-menu__username">{user.username}</Text>
+        )}
         <div className="menu-list__item">
           <div className="menu-list__wrapper">
             <InfoIcon fill="white" margin="0 0.5rem 0 0" size="1rem" />
