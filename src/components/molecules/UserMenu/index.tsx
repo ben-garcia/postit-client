@@ -55,7 +55,9 @@ const UserMenu: FC<UserMenuProps> = () => {
               <div className="user-menu__inner">
                 <UserIcon margin="0 0.3rem 0 0" size="1.1rem" />
                 <div className="user-menu__container">
-                  <Text fontSize="12px">{user.username}</Text>
+                  <Text className="user-menu__username" fontSize="12px">
+                    {user.username}
+                  </Text>
                   <div>
                     <KarmaIcon
                       fill="var(--color-brand-orange100)"
