@@ -1,4 +1,4 @@
-import React, { FC, FormEvent, useRef } from 'react';
+import React, { FC, FormEvent, useRef, useState } from 'react';
 import {
   CheckmarkIcon,
   FormErrorMessage,
@@ -12,8 +12,9 @@ import {
 } from 'supernova-ui';
 
 import { Button } from '../../atoms';
-import { useForm } from '../../../hooks';
+import { useForm, useUser } from '../../../hooks';
 import { loginSchema } from '../../../utils';
+import { useLogInMutation } from '../../../generated/graphql';
 
 /**
  * comment out for Next
@@ -46,15 +47,63 @@ interface User {
 const LoginModal: FC<LoginModalProps> = props => {
   const { isOpen, onClose, openSignUpModal } = props;
   const usernameInputRef = useRef<HTMLElement | null>(null);
-  const { errors, handleBlur, handleChange, values: user } = useForm<User>(
+  const {
+    errors,
+    handleBlur,
+    handleChange,
+    setError,
+    values: user,
+  } = useForm<User>(
     {
       password: '',
       username: '',
     },
     loginSchema
   );
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [logIn] = useLogInMutation();
+  const [isLoading, setIsLoading] = useState(false);
+  const { dispatch } = useUser();
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!errors.username && !errors.password) {
+      const logInUser: Partial<User> = {
+        ...user,
+      };
+
+      try {
+        // trigger the loading icon
+        setIsLoading(true);
+
+        const res = await logIn({
+          variables: logInUser as User,
+        });
+
+        if (res.data?.logIn.success) {
+          // save to local storage
+          localStorage.setItem(
+            'user',
+            JSON.stringify({
+              username: user.username,
+            })
+          );
+          // update the user context
+          dispatch({
+            type: 'USER_LOGGED_IN',
+            payload: user.username,
+          });
+          // close the sign up modal
+          onClose();
+        } else {
+          setError('username', 'Incorrect username or password');
+          setError('password', 'Incorrect username or password');
+          setIsLoading(false);
+        }
+      } catch (error) {
+        // eslint-disable-next-line
+        console.log('logIn error: ', error);
+      }
+    }
   };
 
   return (
@@ -142,7 +191,7 @@ const LoginModal: FC<LoginModalProps> = props => {
             />
             <FormErrorMessage>{errors.password}</FormErrorMessage>
           </FormControl>
-          <Button asSubmit primary width="100%">
+          <Button asSubmit isLoading={isLoading} primary width="100%">
             Log In
           </Button>
           <Paragraph fontSize="0.75rem" margin="md 0 0 0">

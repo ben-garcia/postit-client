@@ -60,9 +60,24 @@ export type GeneralPreferences = {
   viewNsfw: Scalars['Boolean'];
 };
 
+export type LogInInput = {
+  username: Scalars['String'];
+  password: Scalars['String'];
+};
+
+export type LogInResponse = {
+  __typename?: 'LogInResponse';
+  success?: Maybe<Scalars['Boolean']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
+  logIn: LogInResponse;
   signUp: SignUpResponse;
+};
+
+export type MutationLogInArgs = {
+  logInData: LogInInput;
 };
 
 export type MutationSignUpArgs = {
@@ -173,6 +188,15 @@ export type User = {
   updatedAt: Scalars['String'];
 };
 
+export type LogInMutationVariables = Exact<{
+  username: Scalars['String'];
+  password: Scalars['String'];
+}>;
+
+export type LogInMutation = { __typename?: 'Mutation' } & {
+  logIn: { __typename?: 'LogInResponse' } & Pick<LogInResponse, 'success'>;
+};
+
 export type SignUpMutationVariables = Exact<{
   email?: Maybe<Scalars['String']>;
   username: Scalars['String'];
@@ -206,6 +230,54 @@ export type IsUsernameUniqueQuery = { __typename?: 'Query' } & Pick<
   'isUsernameUnique'
 >;
 
+export const LogInDocument = gql`
+  mutation LogIn($username: String!, $password: String!) {
+    logIn(logInData: { username: $username, password: $password }) {
+      success
+    }
+  }
+`;
+export type LogInMutationFn = Apollo.MutationFunction<
+  LogInMutation,
+  LogInMutationVariables
+>;
+
+/**
+ * __useLogInMutation__
+ *
+ * To run a mutation, you first call `useLogInMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLogInMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [logInMutation, { data, loading, error }] = useLogInMutation({
+ *   variables: {
+ *      username: // value for 'username'
+ *      password: // value for 'password'
+ *   },
+ * });
+ */
+export function useLogInMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    LogInMutation,
+    LogInMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<LogInMutation, LogInMutationVariables>(
+    LogInDocument,
+    options
+  );
+}
+export type LogInMutationHookResult = ReturnType<typeof useLogInMutation>;
+export type LogInMutationResult = Apollo.MutationResult<LogInMutation>;
+export type LogInMutationOptions = Apollo.BaseMutationOptions<
+  LogInMutation,
+  LogInMutationVariables
+>;
 export const SignUpDocument = gql`
   mutation SignUp($email: String, $username: String!, $password: String!) {
     signUp(
