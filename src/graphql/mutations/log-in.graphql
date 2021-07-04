@@ -1,0 +1,10 @@
+mutation LogIn($username: String! $password: String!) {
+  logIn(
+    logInData: {
+      username: $username 
+      password: $password 
+    }
+  ) {
+    success
+  }
+}
