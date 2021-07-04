@@ -1,5 +1,6 @@
-import React, { FC, FormEvent, useEffect, useRef } from 'react';
+import React, { FC, FormEvent, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import {
   CheckmarkIcon,
   Flex,
@@ -15,8 +16,9 @@ import {
 
 import { Button } from '../../atoms';
 import NavBarMobile from '../../organisms/NavBar/NavBarMobile';
-import { useForm } from '../../../hooks';
+import { useForm, useUser } from '../../../hooks';
 import { loginSchema } from '../../../utils';
+import { useLogInMutation } from '../../../generated/graphql';
 
 /**
  * comment out for Next
@@ -36,15 +38,67 @@ interface User {
 const LoginPage: FC<LoginPageProps> = () => {
   const breakpoint = useBreakpoint();
   const usernameInputRef = useRef<HTMLElement | null>(null);
-  const { errors, handleBlur, handleChange, values: user } = useForm<User>(
+  const {
+    errors,
+    handleBlur,
+    handleChange,
+    setError,
+    values: user,
+  } = useForm<User>(
     {
       password: '',
       username: '',
     },
     loginSchema
   );
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+
+  const router = useRouter();
+  const [logIn] = useLogInMutation();
+  const [isLoading, setIsLoading] = useState(false);
+  const { dispatch } = useUser();
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!errors.username && !errors.password) {
+      const logInUser: Partial<User> = {
+        ...user,
+      };
+
+      try {
+        // trigger the loading icon
+        setIsLoading(true);
+
+        const res = await logIn({
+          variables: logInUser as User,
+        });
+
+        if (res.data?.logIn.success) {
+          // save to local storage
+          localStorage.setItem(
+            'user',
+            JSON.stringify({
+              username: user.username,
+            })
+          );
+          // update the user context
+          dispatch({
+            type: 'USER_LOGGED_IN',
+            payload: user.username,
+          });
+
+          // redirect to the home page
+          router.replace('/');
+        } else {
+          setError('username', 'Incorrect username or password');
+          setError('password', 'Incorrect username or password');
+          setIsLoading(false);
+        }
+      } catch (error) {
+        // eslint-disable-next-line
+        console.log('logIn error: ', error);
+      }
+    }
   };
 
   useEffect(() => {
@@ -150,7 +204,7 @@ const LoginPage: FC<LoginPageProps> = () => {
               />
               <FormErrorMessage>{errors.password}</FormErrorMessage>
             </FormControl>
-            <Button primary margin="1rem 0 0 0">
+            <Button asSubmit isLoading={isLoading} primary margin="1rem 0 0 0">
               Log In
             </Button>
             <Paragraph fontSize="0.75rem" margin="md 0 0 0">
