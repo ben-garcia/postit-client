@@ -20,6 +20,7 @@ import {
   PremiumShieldIcon,
   SwitchButton,
 } from '../../atoms';
+import { CreateCommunityModal } from '../../organisms';
 import { useUser } from '../../../hooks';
 
 /**
@@ -35,6 +36,9 @@ const UserMenu: FC<UserMenuProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hasNightMode, setHasNightMode] = useState(false);
   const [onlineStatusIsActive, setOnlineStatusIsActive] = useState(true);
+  const [createCommunityModalIsOpen, setCreateCommunityModalIsOpen] = useState(
+    false
+  );
   const {
     state: { user },
   } = useUser();
@@ -111,6 +115,14 @@ const UserMenu: FC<UserMenuProps> = () => {
             </MenuItem>
           </MenuGroup>
           <MenuGroup className="user-menu__group" title="more stuff">
+            {user.isLoggedIn && (
+              <MenuItem
+                className="user-menu__item"
+                onClick={() => setCreateCommunityModalIsOpen(true)}
+              >
+                Create a Community
+              </MenuItem>
+            )}
             <MenuItem className="user-menu__item">
               <CoinIcon className="user-menu__icon" size="1.5rem" />
               Reddit Coins
@@ -137,6 +149,12 @@ const UserMenu: FC<UserMenuProps> = () => {
             )}
           </MenuGroup>
         </MenuList>
+        {createCommunityModalIsOpen && user.isLoggedIn && (
+          <CreateCommunityModal
+            isOpen={createCommunityModalIsOpen}
+            onClose={() => setCreateCommunityModalIsOpen(false)}
+          />
+        )}
       </Menu>
     </div>
   );
