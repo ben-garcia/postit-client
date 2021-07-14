@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface AnyObject {
-  [k: string]: string;
+  [k: string]: any;
 }
 
 interface ValidOptions {
@@ -18,7 +18,7 @@ interface ValidOptions {
 interface ValidationOptions {
   maxLength?: ValidOptions;
   minLength?: ValidOptions;
-  pattern?: ValidOptions;
+  matches?: ValidOptions;
   required?: ValidOptions;
 }
 
@@ -92,13 +92,13 @@ const useForm = <T extends AnyObject>(
       }
     }
 
-    if (validationArray.includes('pattern')) {
-      const pattern = validationObject[name]?.pattern?.value as RegExp;
+    if (validationArray.includes('matches')) {
+      const pattern = validationObject[name]?.matches?.value as RegExp;
 
       if (!pattern.test(value) && value.trim().length) {
         setErrors(prev => ({
           ...prev,
-          [name]: validationObject[name]?.pattern?.message,
+          [name]: validationObject[name]?.matches?.message,
         }));
       } else {
         setErrors(prev => ({

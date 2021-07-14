@@ -5,6 +5,7 @@ import { UserProvider } from '../contexts';
 import '../sass/main.scss';
 import '../components/atoms/SwitchButton/styles.scss';
 import '../components/molecules/UserMenu/styles.scss';
+import '../components/organisms/CreateCommunityModal/styles.scss';
 import '../components/organisms/LoginModal/styles.scss';
 import '../components/organisms/NavBar/NavBarDesktop/styles.scss';
 import '../components/organisms/NavBar/NavBarMobile/styles.scss';

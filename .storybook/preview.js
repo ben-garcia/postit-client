@@ -1,3 +1,4 @@
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import React from 'react';
 
 import { SupernovaProvider } from 'supernova-ui';
@@ -34,10 +35,18 @@ const theme = {
   },
 };
 
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache(),
+  credentials: 'include',
+});
+
 export const decorators = [
   Story => (
-    <SupernovaProvider theme={theme}>
-      <Story />
-    </SupernovaProvider>
+    <ApolloProvider client={client}>
+      <SupernovaProvider theme={theme}>
+        <Story />
+      </SupernovaProvider>
+    </ApolloProvider>
   ),
 ];
