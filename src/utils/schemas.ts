@@ -1,3 +1,32 @@
+const createCommunitySchema = {
+  description: {
+    maxLength: {
+      value: 500,
+      message: 'Description must be between 1 and 500 characters',
+    },
+    minLength: {
+      value: 1,
+      message: 'Description must be between 1 and 500 characters',
+    },
+  },
+  name: {
+    maxLength: {
+      value: 21,
+      message: 'Name must be between 1 and 21 characters',
+    },
+    minLength: {
+      value: 1,
+      message: 'Name must be between 1 and 21 characters',
+    },
+  },
+  type: {
+    matches: {
+      value: /private|protected|public/,
+      message: 'Type must be 1 of 3 values(private, protected, public)',
+    },
+  },
+};
+
 const loginSchema = {
   password: {
     minLength: {
@@ -58,4 +87,4 @@ const signUpSchema = {
   },
 };
 
-export { loginSchema, signUpSchema };
+export { createCommunitySchema, loginSchema, signUpSchema };
