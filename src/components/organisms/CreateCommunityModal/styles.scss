@@ -1,0 +1,70 @@
+.create-community-modal {
+  width: 38% !important;
+
+  &__header {
+    font-size: 1.1rem !important;
+  }
+
+  &__body {
+    align-self: center;
+    display: flex;
+    padding-left: 0 !important;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+  }
+
+  &__input {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &__icon {
+    color: var(--color-brand-red100);
+    font-size: 1rem;
+    margin: 0.5rem 0.5rem 0 0;
+    transform: scale(0);
+    transition: transform 0.4 ease;
+
+    &--visible {
+      transform: scale(1);
+    }
+  }
+
+  &__text {
+    color: var(--color-brand-blue100);
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__button {
+    border: none !important;
+    height: auto !important;
+    padding-inline-end: unset !important;
+    padding-inline-start: unset !important;
+  }
+
+  &__radio {
+    align-self: flex-start;
+  }
+
+  .radio-paragraph {
+    position: relative;
+    top: 0.15rem;
+  }
+
+  .extra-margin-top {
+    margin-top: 2rem;
+  }
+
+  &__inner {
+    align-self: flex-end;
+  }
+}

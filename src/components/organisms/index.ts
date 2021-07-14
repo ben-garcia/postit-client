@@ -1,5 +1,6 @@
+import CreateCommunityModal from './CreateCommunityModal';
 import LoginModal from './LoginModal';
 import NavBar from './NavBar';
 import SignUpModal from './SignUpModal';
 
-export { LoginModal, NavBar, SignUpModal };
+export { CreateCommunityModal, LoginModal, NavBar, SignUpModal };
