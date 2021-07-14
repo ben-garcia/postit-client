@@ -10,6 +10,7 @@ import CirclePlusIcon from './CirclePlusIcon';
 import CodeBlockIcon from './CodeBlockIcon';
 import CodeIcon from './CodeIcon';
 import CoinIcon from './CoinIcon';
+import EyeIcon from './EyeIcon';
 import GavelIcon from './GavelIcon';
 import HeadingIcon from './HeadingIcon';
 import HotIcon from './HotIcon';
@@ -17,6 +18,7 @@ import ItalicIcon from './ItalicIcon';
 import KarmaIcon from './KarmaIcon';
 import LinkIcon from './LinkIcon';
 import ListIcon from './ListIcon';
+import LockIcon from './LockIcon';
 import LogoIcon from './LogoIcon';
 import LogoTextIcon from './LogoTextIcon';
 import ModMailIcon from './ModMailIcon';
@@ -63,6 +65,7 @@ export {
   CodeBlockIcon,
   CodeIcon,
   CoinIcon,
+  EyeIcon,
   GavelIcon,
   HeadingIcon,
   HotIcon,
@@ -70,6 +73,7 @@ export {
   KarmaIcon,
   LinkIcon,
   ListIcon,
+  LockIcon,
   LogoIcon,
   LogoTextIcon,
   ModMailIcon,
