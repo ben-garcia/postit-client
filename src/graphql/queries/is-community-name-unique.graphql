@@ -1,0 +1,3 @@
+query IsCommunityNameUnique($name: String!) {
+  isCommunityNameUnique(name: $name)
+}

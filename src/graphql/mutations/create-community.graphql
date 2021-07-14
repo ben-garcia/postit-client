@@ -1,0 +1,19 @@
+mutation CreateCommunity($name: String!, $isNsfw: Boolean!, $type: String!) {
+  createCommunity(
+    createCommunityData: {
+      name: $name 
+      isNsfw: $isNsfw 
+      type: $type 
+    }
+  ) {
+    errors {
+      field
+      constraints {
+        minLength
+        matches
+        maxLength
+      }
+    }
+    created
+  }
+}
