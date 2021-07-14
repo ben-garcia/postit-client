@@ -55,7 +55,7 @@ const SignUpPage: FC<SignUpPageProps> = () => {
       password: '',
       username: '',
     },
-    signUpSchema
+    signUpSchema as any
   );
   const [signUp] = useSignUpMutation();
   const [isUsernameUnique, { data }] = useIsUsernameUniqueLazyQuery();

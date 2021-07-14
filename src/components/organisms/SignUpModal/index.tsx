@@ -63,7 +63,7 @@ const SignUpModal: FC<SignUpModalProps> = props => {
       password: '',
       username: '',
     },
-    signUpSchema
+    signUpSchema as any
   );
   const [signUp] = useSignUpMutation();
   const [isUsernameUnique, { data }] = useIsUsernameUniqueLazyQuery();
