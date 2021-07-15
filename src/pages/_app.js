@@ -12,6 +12,7 @@ import '../components/organisms/NavBar/NavBarMobile/styles.scss';
 import '../components/organisms/NavBar/NavBarMobile/HamburgerButton/styles.scss';
 import '../components/organisms/NavBar/NavBarMobile/NavBarMobileMenu/styles.scss';
 import '../components/organisms/SignUpModal/styles.scss';
+import '../components/pages/CreateCommunity/styles.scss';
 import '../components/pages/Login/styles.scss';
 import '../components/pages/SignUp/styles.scss';
 import './c/styles.scss';
