@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { FC, useState } from 'react';
 import { AddIcon, EnvelopIcon } from 'supernova-ui';
 
@@ -34,10 +35,12 @@ const NavBarDesktop: FC<NavBarDesktopProps> = () => {
 
   return (
     <header className="navbar-desktop">
-      <div className="navbar-desktop__wrapper">
-        <LogoIcon size="3rem" />
-        <LogoTextIcon size="4rem" />
-      </div>
+      <Link href="/">
+        <a className="navbar-desktop__wrapper">
+          <LogoIcon size="3rem" />
+          <LogoTextIcon size="4rem" />
+        </a>
+      </Link>
       <SearchBar />
       <div className="navbar-desktop__wrapper">
         {!user.isLoggedIn && (
