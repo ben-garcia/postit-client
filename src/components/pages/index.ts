@@ -1,4 +1,3 @@
-import Login from './Login';
-import SignUp from './SignUp';
-
-export { Login, SignUp };
+export { default as CreateCommunity } from './CreateCommunity';
+export { default as Login } from './Login';
+export { default as SignUp } from './SignUp';

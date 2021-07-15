@@ -1,4 +1,4 @@
-.signup-page {
+.create-community-page {
   &__flex-item {
     padding: 0 !important;
     max-width: 130px !important;
@@ -16,15 +16,15 @@
     background-image: url('../../../assets/images/tiles.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 80vh;
+    height: 92vh;
     width: 100%;
   }
 
   &__form {
     display: flex;
     flex-direction: column;
+    max-width: 520px;
     padding-left: 1rem !important;
-    width: 280px;
   }
 
   &__input {
@@ -59,5 +59,22 @@
     height: auto !important;
     padding-inline-end: unset !important;
     padding-inline-start: unset !important;
+  }
+
+  &__radio {
+    align-self: flex-start;
+  }
+
+  .radio-paragraph {
+    position: relative;
+    top: 0.15rem;
+  }
+
+  .extra-margin-top {
+    margin-top: 2rem;
+  }
+
+  &__inner {
+    align-self: flex-end;
   }
 }
