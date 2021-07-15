@@ -14,6 +14,7 @@ import '../components/organisms/NavBar/NavBarMobile/NavBarMobileMenu/styles.scss
 import '../components/organisms/SignUpModal/styles.scss';
 import '../components/pages/Login/styles.scss';
 import '../components/pages/SignUp/styles.scss';
+import './c/styles.scss';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
