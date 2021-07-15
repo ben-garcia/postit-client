@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import {
   Checkbox,
@@ -68,6 +69,7 @@ const CreateCommunityModal: FC<CreateCommunityModalProps> = props => {
   );
   const [createCommunity] = useCreateCommunityMutation();
   const [isCommunityNameUnique, { data }] = useIsCommunityNameUniqueLazyQuery();
+  const router = useRouter();
   const debounceValue = useDebounce<string>(community.name);
   const [isLoading, setIsLoading] = useState(false);
   const [communityType, setCommunityType] = useState<Community['type']>(
@@ -88,6 +90,8 @@ const CreateCommunityModal: FC<CreateCommunityModalProps> = props => {
         if (res.data?.createCommunity.created) {
           // close the create community modal
           onClose();
+          // go to the newly created community page
+          router.replace(`/c/${community.name}`);
         } else if (res.data?.createCommunity.errors) {
           setIsLoading(false);
         }
