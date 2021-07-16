@@ -56,7 +56,7 @@ const loginSchema = {
 
 const signUpSchema = {
   email: {
-    pattern: {
+    matches: {
       value: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
       message: 'Please fix your email to continue.',
     },
