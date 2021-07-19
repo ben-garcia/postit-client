@@ -35,7 +35,7 @@ interface LoginModalProps {
   /**
    * function to call when the 'Sign Up' button is clicked
    */
-  openSignUpModal: () => void;
+  openSignUpModal?: () => void;
 }
 
 interface User {

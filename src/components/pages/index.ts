@@ -1,3 +1,4 @@
-export { default as CreateCommunity } from './CreateCommunity';
-export { default as Login } from './Login';
-export { default as SignUp } from './SignUp';
+export { default as CommunityPage } from './Community';
+export { default as CreateCommunityPage } from './CreateCommunity';
+export { default as LoginPage } from './Login';
+export { default as SignUpPage } from './SignUp';
