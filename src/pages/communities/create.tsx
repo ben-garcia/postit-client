@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
-import { CreateCommunity } from '../../components/pages';
+import { CreateCommunityPage } from '../../components/pages';
 
 interface CreateCommunityProps {}
 
-const Register: FC<CreateCommunityProps> = () => <CreateCommunity />;
+const Register: FC<CreateCommunityProps> = () => <CreateCommunityPage />;
 
 export default Register;

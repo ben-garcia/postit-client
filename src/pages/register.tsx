@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
-import { SignUp } from '../components/pages';
+import { SignUpPage } from '../components/pages';
 
 interface RegisterProps {}
 
-const Register: FC<RegisterProps> = () => <SignUp />;
+const Register: FC<RegisterProps> = () => <SignUpPage />;
 
 export default Register;

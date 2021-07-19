@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Login as LoginPage } from '../../components/pages';
+import { LoginPage } from '../../components/pages';
 
 interface LoginProps {}
 
