@@ -13,8 +13,11 @@ interface ButtonProps {
   hoverColor?: string;
   leftIcon?: ReactNode;
   isLoading?: boolean;
+  padding?: string;
   margin?: string;
   onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
   primary?: boolean;
   secondary?: boolean;
   width?: string;
@@ -31,6 +34,9 @@ const Button: FC<ButtonProps> = props => {
     isLoading,
     margin,
     onClick,
+    onMouseEnter,
+    onMouseLeave,
+    padding,
     primary,
     secondary,
     width,
@@ -56,6 +62,9 @@ const Button: FC<ButtonProps> = props => {
       isLoading={isLoading}
       margin={margin}
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      padding={padding}
       variant={buttonType}
       width={width}
     >
