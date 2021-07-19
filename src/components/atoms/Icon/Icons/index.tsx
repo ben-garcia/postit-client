@@ -1,109 +1,55 @@
-import AddImageIcon from './AddImageIcon';
-import AddVideoIcon from './AddVideoIcon';
-import BoldIcon from './BoldIcon';
-import BulletListIcon from './BulletListIcon';
-import CakeIcon from './CakeIcon';
-import CameraIcon from './CameraIcon';
-import ChatIcon from './ChatIcon';
-import ChatMutedIcon from './ChatMutedIcon';
-import CirclePlusIcon from './CirclePlusIcon';
-import CodeBlockIcon from './CodeBlockIcon';
-import CodeIcon from './CodeIcon';
-import CoinIcon from './CoinIcon';
-import EyeIcon from './EyeIcon';
-import GavelIcon from './GavelIcon';
-import HeadingIcon from './HeadingIcon';
-import HotIcon from './HotIcon';
-import ItalicIcon from './ItalicIcon';
-import KarmaIcon from './KarmaIcon';
-import LinkIcon from './LinkIcon';
-import ListIcon from './ListIcon';
-import LockIcon from './LockIcon';
-import LogoIcon from './LogoIcon';
-import LogoTextIcon from './LogoTextIcon';
-import ModMailIcon from './ModMailIcon';
-import ModModeIcon from './ModModeIcon';
-import ModShieldIcon from './ModShieldIcon';
-import NewIcon from './NewIcon';
-import NumberedListIcon from './NumberedListIcon';
-import OutboundLinkIcon from './OutboundLinkIcon';
-import PencilIcon from './PencilIcon';
-import PollIcon from './PollIcon';
-import PopoutIcon from './PopoutIcon';
-import PostIcon from './PostIcon';
-import PremiumShieldIcon from './PremiumShieldIcon';
-import ProfileIcon from './ProfileIcon';
-import QuequeIcon from './QuequeIcon';
-import QuoteblockIcon from './QuoteblockIcon';
-import RisingIcon from './RisingIcon';
-import RulesIcon from './RulesIcon';
-import SearchIcon from './SearchIcon';
-import SettingsIcon from './SettingsIcon';
-import ShipIcon from './ShipIcon';
-import SpoilerIcon from './SpoilerIcon';
-import StrikethroughIcon from './StrikethroughIcon';
-import SuperscriptIcon from './SuperscriptIcon';
-import TableIcon from './TableIcon';
-import TagIcon from './TagIcon';
-import ThinPencilIcon from './ThinPencilIcon';
-import TopIcon from './TopIcon';
-import TrashIcon from './TrashIcon';
-import TriangleDownIcon from './TriangleDownIcon';
-import TriangleUpIcon from './TriangleUpIcon';
-import UploadIcon from './UploadIcon';
-
-export {
-  AddImageIcon,
-  AddVideoIcon,
-  BoldIcon,
-  BulletListIcon,
-  CakeIcon,
-  CameraIcon,
-  ChatIcon,
-  ChatMutedIcon,
-  CirclePlusIcon,
-  CodeBlockIcon,
-  CodeIcon,
-  CoinIcon,
-  EyeIcon,
-  GavelIcon,
-  HeadingIcon,
-  HotIcon,
-  ItalicIcon,
-  KarmaIcon,
-  LinkIcon,
-  ListIcon,
-  LockIcon,
-  LogoIcon,
-  LogoTextIcon,
-  ModMailIcon,
-  ModModeIcon,
-  ModShieldIcon,
-  NewIcon,
-  NumberedListIcon,
-  OutboundLinkIcon,
-  PencilIcon,
-  PollIcon,
-  PopoutIcon,
-  PostIcon,
-  PremiumShieldIcon,
-  ProfileIcon,
-  QuequeIcon,
-  QuoteblockIcon,
-  RisingIcon,
-  RulesIcon,
-  SearchIcon,
-  SettingsIcon,
-  ShipIcon,
-  SpoilerIcon,
-  StrikethroughIcon,
-  SuperscriptIcon,
-  TableIcon,
-  TagIcon,
-  ThinPencilIcon,
-  TopIcon,
-  TrashIcon,
-  TriangleDownIcon,
-  TriangleUpIcon,
-  UploadIcon,
-};
+export { default as AddImageIcon } from './AddImageIcon';
+export { default as AddVideoIcon } from './AddVideoIcon';
+export { default as BoldIcon } from './BoldIcon';
+export { default as BulletListIcon } from './BulletListIcon';
+export { default as CakeIcon } from './CakeIcon';
+export { default as CameraIcon } from './CameraIcon';
+export { default as ChatIcon } from './ChatIcon';
+export { default as ChatMutedIcon } from './ChatMutedIcon';
+export { default as CircleCheckmark } from './CircleCheckmark';
+export { default as CirclePlusIcon } from './CirclePlusIcon';
+export { default as CodeBlockIcon } from './CodeBlockIcon';
+export { default as CodeIcon } from './CodeIcon';
+export { default as CoinIcon } from './CoinIcon';
+export { default as EyeIcon } from './EyeIcon';
+export { default as GavelIcon } from './GavelIcon';
+export { default as HeadingIcon } from './HeadingIcon';
+export { default as HotIcon } from './HotIcon';
+export { default as ItalicIcon } from './ItalicIcon';
+export { default as KarmaIcon } from './KarmaIcon';
+export { default as LinkIcon } from './LinkIcon';
+export { default as ListIcon } from './ListIcon';
+export { default as LockIcon } from './LockIcon';
+export { default as LogoIcon } from './LogoIcon';
+export { default as LogoTextIcon } from './LogoTextIcon';
+export { default as ModMailIcon } from './ModMailIcon';
+export { default as ModModeIcon } from './ModModeIcon';
+export { default as ModShieldIcon } from './ModShieldIcon';
+export { default as NewCommunityIcon } from './NewCommunityIcon';
+export { default as NewIcon } from './NewIcon';
+export { default as NumberedListIcon } from './NumberedListIcon';
+export { default as OutboundLinkIcon } from './OutboundLinkIcon';
+export { default as PencilIcon } from './PencilIcon';
+export { default as PollIcon } from './PollIcon';
+export { default as PopoutIcon } from './PopoutIcon';
+export { default as PostIcon } from './PostIcon';
+export { default as PremiumShieldIcon } from './PremiumShieldIcon';
+export { default as ProfileIcon } from './ProfileIcon';
+export { default as QuequeIcon } from './QuequeIcon';
+export { default as QuoteblockIcon } from './QuoteblockIcon';
+export { default as RisingIcon } from './RisingIcon';
+export { default as RulesIcon } from './RulesIcon';
+export { default as SearchIcon } from './SearchIcon';
+export { default as SettingsIcon } from './SettingsIcon';
+export { default as ShipIcon } from './ShipIcon';
+export { default as SpoilerIcon } from './SpoilerIcon';
+export { default as StrikethroughIcon } from './StrikethroughIcon';
+export { default as SuperscriptIcon } from './SuperscriptIcon';
+export { default as TableIcon } from './TableIcon';
+export { default as TagIcon } from './TagIcon';
+export { default as ThinPencilIcon } from './ThinPencilIcon';
+export { default as TopIcon } from './TopIcon';
+export { default as TrashIcon } from './TrashIcon';
+export { default as TriangleDownIcon } from './TriangleDownIcon';
+export { default as TriangleUpIcon } from './TriangleUpIcon';
+export { default as UploadIcon } from './UploadIcon';
