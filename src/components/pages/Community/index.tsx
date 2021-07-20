@@ -6,6 +6,7 @@ import {
   EnvelopIcon,
   Paragraph,
   Text,
+  useBreakpoint,
   UserIcon,
 } from 'supernova-ui';
 
@@ -43,6 +44,7 @@ const CommunityPage: FC<CommunityPageProps> = props => {
   const {
     state: { user },
   } = useUser();
+  const breakpoint = useBreakpoint();
   const [joinButtonText, setJoinButtonText] = useState('Joined');
   const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
 
@@ -78,6 +80,21 @@ const CommunityPage: FC<CommunityPageProps> = props => {
             >
               {`c/${community.name}`}
             </Text>
+
+            {(breakpoint === 'xs' ||
+              breakpoint === 'sm' ||
+              breakpoint === 'md') && (
+              <Paragraph fontSize="0.8rem" margin="0.3rem 0 0 0">
+                <Text fontWeight="xxl" margin="0 0.25rem">
+                  1
+                </Text>
+                <Text>member</Text>
+                <Text fontWeight="xxl" margin="0 0.25rem">
+                  0
+                </Text>
+                <Text>online</Text>
+              </Paragraph>
+            )}
           </div>
 
           {user.isLoggedIn ? (
@@ -120,10 +137,9 @@ const CommunityPage: FC<CommunityPageProps> = props => {
               </Button>
 
               <Button
-                className="community-page__button"
+                className="community-page__button flex-grow-2"
                 hoverColor="var(--color-brand-grey100)"
                 secondary
-                width="29.5rem"
               >
                 Create Post
               </Button>
@@ -292,69 +308,77 @@ const CommunityPage: FC<CommunityPageProps> = props => {
                     <Text color="var(--color-brand-grey200)">0</Text>
                   </Button>
 
-                  <Button
-                    className="community-page__button"
-                    color="transparent"
-                    hoverColor="var(--color-brand-grey100)"
-                  >
-                    <AddVideoIcon
-                      fill="var(--color-brand-grey200)"
-                      margin="0 0.2rem"
-                      size="1.5rem"
-                    />
-                    <Text color="var(--color-brand-grey200)">Share</Text>
-                  </Button>
+                  {breakpoint !== 'xs' &&
+                    breakpoint !== 'sm' &&
+                    breakpoint !== 'md' && (
+                      <>
+                        <Button
+                          className="community-page__button"
+                          color="transparent"
+                          hoverColor="var(--color-brand-grey100)"
+                        >
+                          <AddVideoIcon
+                            fill="var(--color-brand-grey200)"
+                            margin="0 0.2rem"
+                            size="1.5rem"
+                          />
+                          <Text color="var(--color-brand-grey200)">Share</Text>
+                        </Button>
 
-                  <Button
-                    className="community-page__button"
-                    color="transparent"
-                    hoverColor="var(--color-brand-grey100)"
-                  >
-                    <AddVideoIcon
-                      fill="var(--color-brand-grey200)"
-                      margin="0 0.2rem"
-                      size="1.5rem"
-                    />
-                    <Text color="var(--color-brand-grey200)">Approve</Text>
-                  </Button>
+                        <Button
+                          className="community-page__button"
+                          color="transparent"
+                          hoverColor="var(--color-brand-grey100)"
+                        >
+                          <AddVideoIcon
+                            fill="var(--color-brand-grey200)"
+                            margin="0 0.2rem"
+                            size="1.5rem"
+                          />
+                          <Text color="var(--color-brand-grey200)">
+                            Approve
+                          </Text>
+                        </Button>
 
-                  <Button
-                    className="community-page__button"
-                    color="transparent"
-                    hoverColor="var(--color-brand-grey100)"
-                  >
-                    <AddVideoIcon
-                      fill="var(--color-brand-grey200)"
-                      margin="0 0.2rem"
-                      size="1.5rem"
-                    />
-                    <Text color="var(--color-brand-grey200)">Remove</Text>
-                  </Button>
+                        <Button
+                          className="community-page__button"
+                          color="transparent"
+                          hoverColor="var(--color-brand-grey100)"
+                        >
+                          <AddVideoIcon
+                            fill="var(--color-brand-grey200)"
+                            margin="0 0.2rem"
+                            size="1.5rem"
+                          />
+                          <Text color="var(--color-brand-grey200)">Remove</Text>
+                        </Button>
 
-                  <Button
-                    className="community-page__button"
-                    color="transparent"
-                    hoverColor="var(--color-brand-grey100)"
-                  >
-                    <AddVideoIcon
-                      fill="var(--color-brand-grey200)"
-                      margin="0 0.2rem"
-                      size="1.5rem"
-                    />
-                    <Text color="var(--color-brand-grey200)">Spam</Text>
-                  </Button>
+                        <Button
+                          className="community-page__button"
+                          color="transparent"
+                          hoverColor="var(--color-brand-grey100)"
+                        >
+                          <AddVideoIcon
+                            fill="var(--color-brand-grey200)"
+                            margin="0 0.2rem"
+                            size="1.5rem"
+                          />
+                          <Text color="var(--color-brand-grey200)">Spam</Text>
+                        </Button>
 
-                  <Button
-                    className="community-page__button"
-                    color="transparent"
-                    hoverColor="var(--color-brand-grey100)"
-                  >
-                    <ModShieldIcon
-                      fill="var(--color-brand-grey200)"
-                      margin="0 0.2rem"
-                      size="1.5rem"
-                    />
-                  </Button>
+                        <Button
+                          className="community-page__button"
+                          color="transparent"
+                          hoverColor="var(--color-brand-grey100)"
+                        >
+                          <ModShieldIcon
+                            fill="var(--color-brand-grey200)"
+                            margin="0 0.2rem"
+                            size="1.5rem"
+                          />
+                        </Button>
+                      </>
+                    )}
 
                   <Button
                     color="transparent"
@@ -383,293 +407,295 @@ const CommunityPage: FC<CommunityPageProps> = props => {
           </article>
         </main>
 
-        <aside className="community-page__aside">
-          <div className="community-page__container-wrapper">
-            <div style={{ backgroundColor: community.themeColor }}>
-              <div className="community-page__about-header">
-                <Text color="var(--color-brand-white)" fontWeight="xxl">
-                  About community
-                </Text>
-                {user.isLoggedIn && (
-                  <div className="flex">
-                    <Button
-                      color="transparent"
-                      className="community-page__button"
-                    >
-                      <ModShieldIcon
-                        fill="var(--color-brand-white)"
-                        margin="0 0.5rem"
-                        size="1.2rem"
-                      />
-                      Mod Tools
-                    </Button>
-                    <Button
-                      color="transparent"
-                      className="community-page__button"
-                    >
-                      <Text
-                        className="align-self-center"
-                        color="var(--color-brand-white)"
-                        fontSize="1.4rem"
-                      >
-                        ...
-                      </Text>
-                    </Button>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div className="community-page__wrapper-container">
-              {user.isLoggedIn ? (
-                <Button
-                  className="community-page__description community-page__button"
-                  secondary
-                >
-                  Add description
-                </Button>
-              ) : (
-                <Text fontSize="0.9rem">{`Welcome to ${community.name}`}</Text>
-              )}
-
-              <div className="flex margin-bottom-1">
-                <div className="flex flex-column">
-                  <Text fontWeight="xxl">1</Text>
-
-                  <Text fontSize="0.75rem" fontWeight="xxl">
-                    Members
-                  </Text>
-                </div>
-
-                <div className="flex flex-column margin-left-5">
-                  <Text fontWeight="xxl">1</Text>
-
-                  <Text fontSize="0.75rem" fontWeight="xxl">
-                    Online
-                  </Text>
-                </div>
-              </div>
-
-              <hr className="divider" />
-
-              <div className="flex">
-                <CakeIcon size="1.5rem" />
-                <Text
-                  className="align-self-end"
-                  fontSize="0.9rem"
-                  margin="0 0 0 sm"
-                >
-                  {`Created ${
-                    new Date(Number(community.createdAt))
-                      .toLocaleString()
-                      .split(',')[0]
-                  }`}
-                </Text>
-              </div>
-
-              {user.isLoggedIn && (
-                <>
-                  <hr className="divider" />
-
-                  <div className="flex">
-                    <CoinIcon size="1.2rem" />
-
-                    <Text
-                      className="align-self-end"
-                      fontSize="0.9rem"
-                      margin="0 0 0 sm"
-                    >
-                      {`${community.coinCount} Coins`}
-                    </Text>
-                  </div>
-
-                  <hr className="divider" />
-
-                  <div className="flex">
-                    <Text color="var(--color-brand-red100)" fontSize="0.8rem">
-                      New
-                    </Text>
-
-                    <Text fontSize="0.9rem" margin="0 0 0 0.2rem">
-                      Community topics
-                    </Text>
-                  </div>
-
-                  <Button
-                    className="community-page__button border-none"
-                    color="transparent"
-                    hoverColor="transparent"
-                    secondary
-                  >
-                    Add a Primary Topic
-                    <ChevronDownIcon margin="0 0 0 xs" size="0.5rem" />
-                  </Button>
-
-                  <Button margin="0.7rem 0" primary width="100%">
-                    Create Post
-                  </Button>
-
-                  <hr className="divider" />
-
-                  <Button
-                    className="community-page__button border-none flex-justify-between"
-                    color="transparent"
-                    hoverColor="var(--color-brand-grey100)"
-                    padding="0 sm"
-                    secondary
-                    width="100%"
-                  >
-                    Community Options
-                    <ChevronDownIcon margin="0 0 0 xs" size="0.5rem" />
-                  </Button>
-                </>
-              )}
-            </div>
-          </div>
-
-          {user.isLoggedIn && (
+        {breakpoint !== 'xs' && breakpoint !== 'sm' && breakpoint !== 'md' && (
+          <aside className="community-page__aside">
             <div className="community-page__container-wrapper">
-              <div className="position-relative">
-                <div className="community-page__image" />
-
-                <Button
-                  className="community-page__button position-absolute position-top-right"
-                  color="transparent"
-                  hoverColor="transparent"
-                >
-                  <CloseIcon fill="var(--color-brand-black100)" size="1rem" />
-                </Button>
+              <div style={{ backgroundColor: community.themeColor }}>
+                <div className="community-page__about-header">
+                  <Text color="var(--color-brand-white)" fontWeight="xxl">
+                    About community
+                  </Text>
+                  {user.isLoggedIn && (
+                    <div className="flex">
+                      <Button
+                        color="transparent"
+                        className="community-page__button"
+                      >
+                        <ModShieldIcon
+                          fill="var(--color-brand-white)"
+                          margin="0 0.5rem"
+                          size="1.2rem"
+                        />
+                        Mod Tools
+                      </Button>
+                      <Button
+                        color="transparent"
+                        className="community-page__button"
+                      >
+                        <Text
+                          className="align-self-center"
+                          color="var(--color-brand-white)"
+                          fontSize="1.4rem"
+                        >
+                          ...
+                        </Text>
+                      </Button>
+                    </div>
+                  )}
+                </div>
               </div>
 
-              <div className="community-page__wrapper-container flex flex-column">
-                <Text className="align-self-center" fontWeight="xxl">
-                  Add community style
-                </Text>
-
-                <Paragraph fontSize="0.8rem" lineHeight="21px">
-                  Styling your community helps attract members. For assistance,
-                  take a look at the Customize Appearance Overview . Here are
-                  some great ways to get started.
-                </Paragraph>
-
-                <div className="flex flex-column align-items-start margin-y-05">
+              <div className="community-page__wrapper-container">
+                {user.isLoggedIn ? (
                   <Button
-                    className="community-page__button border-none"
-                    color="transparent"
-                    hoverColor="transparent"
+                    className="community-page__description community-page__button"
                     secondary
                   >
-                    <CircleCheckmark
-                      fill={
-                        community.themeColor === '#0079d3'
-                          ? 'var(--color-brand-grey100)'
-                          : 'var(--color-brand-blue100)'
-                      }
-                      margin="0 0.3rem 0 0"
-                      size="1rem"
-                    />
-                    Add community icon
+                    Add description
                   </Button>
+                ) : (
+                  <Text fontSize="0.9rem">{`Welcome to ${community.name}`}</Text>
+                )}
 
-                  <Button
-                    className="community-page__button border-none"
-                    color="transparent"
-                    hoverColor="transparent"
-                    secondary
-                  >
-                    <CircleCheckmark
-                      fill={
-                        community.themeColor === '#0079d3'
-                          ? 'var(--color-brand-grey100)'
-                          : 'var(--color-brand-blue100)'
-                      }
-                      margin="0 0.3rem 0 0"
-                      size="1rem"
-                    />
-                    Customize banner
-                  </Button>
+                <div className="flex margin-bottom-1">
+                  <div className="flex flex-column">
+                    <Text fontWeight="xxl">1</Text>
 
-                  <Button
-                    className="community-page__button border-none"
-                    color="transparent"
-                    hoverColor="transparent"
-                    secondary
-                  >
-                    <CircleCheckmark
-                      fill={
-                        community.themeColor === '#0079d3'
-                          ? 'var(--color-brand-grey100)'
-                          : 'var(--color-brand-blue100)'
-                      }
-                      margin="0 0.3rem 0 0"
-                      size="1rem"
-                    />
-                    Customize colors
-                  </Button>
+                    <Text fontSize="0.75rem" fontWeight="xxl">
+                      Members
+                    </Text>
+                  </div>
+
+                  <div className="flex flex-column margin-left-5">
+                    <Text fontWeight="xxl">1</Text>
+
+                    <Text fontSize="0.75rem" fontWeight="xxl">
+                      Online
+                    </Text>
+                  </div>
                 </div>
 
-                <Button margin="0.7rem 0" secondary width="100%">
-                  Customize Appearance
-                </Button>
+                <hr className="divider" />
 
-                <Paragraph
-                  className="align-self-center"
-                  color="var(--color-brand-grey200)"
-                  fontSize="0.7rem"
-                >
-                  Only moderators can see this widget
-                </Paragraph>
-              </div>
-            </div>
-          )}
+                <div className="flex">
+                  <CakeIcon size="1.5rem" />
+                  <Text
+                    className="align-self-end"
+                    fontSize="0.9rem"
+                    margin="0 0 0 sm"
+                  >
+                    {`Created ${
+                      new Date(Number(community.createdAt))
+                        .toLocaleString()
+                        .split(',')[0]
+                    }`}
+                  </Text>
+                </div>
 
-          <div className="community-page__container-wrapper">
-            <div style={{ backgroundColor: community.themeColor }}>
-              <div className="community-page__about-header">
-                <Text color="var(--color-brand-white)" fontWeight="xxl">
-                  Moderators
-                </Text>
-              </div>
-            </div>
+                {user.isLoggedIn && (
+                  <>
+                    <hr className="divider" />
 
-            <div className="community-page__wrapper-container flex flex-column">
-              {user.isLoggedIn ? (
-                <>
-                  <Button margin="0.7rem 0" secondary width="100%">
-                    <EnvelopIcon
-                      fill="var(--color-brand-blue100)"
-                      margin="0 xs 0 0"
-                      size="1rem"
-                    />
-                    Message the mods
-                  </Button>
+                    <div className="flex">
+                      <CoinIcon size="1.2rem" />
 
-                  <div className="community-page__moderators">
+                      <Text
+                        className="align-self-end"
+                        fontSize="0.9rem"
+                        margin="0 0 0 sm"
+                      >
+                        {`${community.coinCount} Coins`}
+                      </Text>
+                    </div>
+
+                    <hr className="divider" />
+
+                    <div className="flex">
+                      <Text color="var(--color-brand-red100)" fontSize="0.8rem">
+                        New
+                      </Text>
+
+                      <Text fontSize="0.9rem" margin="0 0 0 0.2rem">
+                        Community topics
+                      </Text>
+                    </div>
+
                     <Button
                       className="community-page__button border-none"
                       color="transparent"
                       hoverColor="transparent"
                       secondary
                     >
-                      {`u/${community.creator.username}`}
+                      Add a Primary Topic
+                      <ChevronDownIcon margin="0 0 0 xs" size="0.5rem" />
+                    </Button>
+
+                    <Button margin="0.7rem 0" primary width="100%">
+                      Create Post
+                    </Button>
+
+                    <hr className="divider" />
+
+                    <Button
+                      className="community-page__button border-none flex-justify-between"
+                      color="transparent"
+                      hoverColor="var(--color-brand-grey100)"
+                      padding="0 sm"
+                      secondary
+                      width="100%"
+                    >
+                      Community Options
+                      <ChevronDownIcon margin="0 0 0 xs" size="0.5rem" />
+                    </Button>
+                  </>
+                )}
+              </div>
+            </div>
+
+            {user.isLoggedIn && (
+              <div className="community-page__container-wrapper">
+                <div className="position-relative">
+                  <div className="community-page__image" />
+
+                  <Button
+                    className="community-page__button position-absolute position-top-right"
+                    color="transparent"
+                    hoverColor="transparent"
+                  >
+                    <CloseIcon fill="var(--color-brand-black100)" size="1rem" />
+                  </Button>
+                </div>
+
+                <div className="community-page__wrapper-container flex flex-column">
+                  <Text className="align-self-center" fontWeight="xxl">
+                    Add community style
+                  </Text>
+
+                  <Paragraph fontSize="0.8rem" lineHeight="21px">
+                    Styling your community helps attract members. For
+                    assistance, take a look at the Customize Appearance Overview
+                    . Here are some great ways to get started.
+                  </Paragraph>
+
+                  <div className="flex flex-column align-items-start margin-y-05">
+                    <Button
+                      className="community-page__button border-none"
+                      color="transparent"
+                      hoverColor="transparent"
+                      secondary
+                    >
+                      <CircleCheckmark
+                        fill={
+                          community.themeColor === '#0079d3'
+                            ? 'var(--color-brand-grey100)'
+                            : 'var(--color-brand-blue100)'
+                        }
+                        margin="0 0.3rem 0 0"
+                        size="1rem"
+                      />
+                      Add community icon
+                    </Button>
+
+                    <Button
+                      className="community-page__button border-none"
+                      color="transparent"
+                      hoverColor="transparent"
+                      secondary
+                    >
+                      <CircleCheckmark
+                        fill={
+                          community.themeColor === '#0079d3'
+                            ? 'var(--color-brand-grey100)'
+                            : 'var(--color-brand-blue100)'
+                        }
+                        margin="0 0.3rem 0 0"
+                        size="1rem"
+                      />
+                      Customize banner
+                    </Button>
+
+                    <Button
+                      className="community-page__button border-none"
+                      color="transparent"
+                      hoverColor="transparent"
+                      secondary
+                    >
+                      <CircleCheckmark
+                        fill={
+                          community.themeColor === '#0079d3'
+                            ? 'var(--color-brand-grey100)'
+                            : 'var(--color-brand-blue100)'
+                        }
+                        margin="0 0.3rem 0 0"
+                        size="1rem"
+                      />
+                      Customize colors
                     </Button>
                   </div>
 
-                  <Button
-                    className="community-page__button border-none align-self-end"
-                    color="transparent"
-                    hoverColor="transparent"
-                    secondary
-                  >
-                    View all moderators
+                  <Button margin="0.7rem 0" secondary width="100%">
+                    Customize Appearance
                   </Button>
-                </>
-              ) : (
-                <Text fontSize="0.8rem">Moderator list hidden.</Text>
-              )}
+
+                  <Paragraph
+                    className="align-self-center"
+                    color="var(--color-brand-grey200)"
+                    fontSize="0.7rem"
+                  >
+                    Only moderators can see this widget
+                  </Paragraph>
+                </div>
+              </div>
+            )}
+
+            <div className="community-page__container-wrapper">
+              <div style={{ backgroundColor: community.themeColor }}>
+                <div className="community-page__about-header">
+                  <Text color="var(--color-brand-white)" fontWeight="xxl">
+                    Moderators
+                  </Text>
+                </div>
+              </div>
+
+              <div className="community-page__wrapper-container flex flex-column">
+                {user.isLoggedIn ? (
+                  <>
+                    <Button margin="0.7rem 0" secondary width="100%">
+                      <EnvelopIcon
+                        fill="var(--color-brand-blue100)"
+                        margin="0 xs 0 0"
+                        size="1rem"
+                      />
+                      Message the mods
+                    </Button>
+
+                    <div className="community-page__moderators">
+                      <Button
+                        className="community-page__button border-none"
+                        color="transparent"
+                        hoverColor="transparent"
+                        secondary
+                      >
+                        {`u/${community.creator.username}`}
+                      </Button>
+                    </div>
+
+                    <Button
+                      className="community-page__button border-none align-self-end"
+                      color="transparent"
+                      hoverColor="transparent"
+                      secondary
+                    >
+                      View all moderators
+                    </Button>
+                  </>
+                ) : (
+                  <Text fontSize="0.8rem">Moderator list hidden.</Text>
+                )}
+              </div>
             </div>
-          </div>
-        </aside>
+          </aside>
+        )}
       </div>
 
       {loginModalIsOpen && (
