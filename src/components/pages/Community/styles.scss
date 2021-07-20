@@ -51,8 +51,9 @@
     margin-top: 0.3rem;
   }
 
-  &__join-button {
+  &__join-button.snui-button {
     align-self: center;
+    border: 1px solid var(--color-brand-blue200);
     font-weight: 700;
   }
 
@@ -67,7 +68,7 @@
   &__main-content {
     display: flex;
     flex-direction: column;
-    margin: 1.3rem 0 1.3rem 1.5rem;
+    margin: 1.3rem 0;
     max-width: 640px;
     width: 100%;
 
@@ -115,7 +116,7 @@
     }
   }
 
-  &__user-button {
+  &__user-button.snui-button {
     border-radius: 100% !important;
     box-shadow: unset;
     height: 45px;
@@ -125,7 +126,7 @@
     width: 45px;
   }
 
-  &__button {
+  &__button.snui-button {
     border-radius: 4px !important;
     box-shadow: unset;
     height: 30px;
@@ -155,7 +156,7 @@
     padding: 0.5rem 0.8rem;
   }
 
-  &__description {
+  &__description.snui-button {
     margin: 0.5rem 0;
     width: 100%;
   }
@@ -216,7 +217,7 @@
 }
 
 .border-none {
-  border: none;
+  border: none !important;
 }
 
 .flex-column {
@@ -228,7 +229,7 @@
 }
 
 .flex-justify-between {
-  justify-content: space-between;
+  justify-content: space-between !important;
 }
 
 .flex-grow-2 {
