@@ -1,3 +1,11 @@
+// since css variables don't work with media queries
+$breakpoint-xs: 0;
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1280px;
+$breakpoint-xxl: 1536px;
+
 :root {
   --color-brand-black100: #1c1c1c;
   --color-brand-black200: #030303;
