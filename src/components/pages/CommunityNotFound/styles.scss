@@ -1,0 +1,29 @@
+@import '../../../sass/mixins';
+@import '../../../sass/variables';
+
+.community-not-found-page {
+  background-color: var(--color-brand-grey100);
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
+
+  &__main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 65%;
+    width: 100%;
+
+    @include media-query($breakpoint-md) {
+      margin: 0 0.2rem;
+    }
+  }
+
+  &__circle {
+    background-color: var(--color-brand-grey200);
+    border-radius: 50%;
+    height: 6rem;
+    width: 6rem;
+  }
+}
