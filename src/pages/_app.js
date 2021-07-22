@@ -1,6 +1,7 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
 
 import { UserProvider } from '../contexts';
+import { apolloClient } from '../utils';
 
 import '../sass/main.scss';
 import '../components/atoms/SwitchButton/styles.scss';
@@ -13,19 +14,14 @@ import '../components/organisms/NavBar/NavBarMobile/HamburgerButton/styles.scss'
 import '../components/organisms/NavBar/NavBarMobile/NavBarMobileMenu/styles.scss';
 import '../components/organisms/SignUpModal/styles.scss';
 import '../components/pages/Community/styles.scss';
+import '../components/pages/CommunityNotFound/styles.scss';
 import '../components/pages/CreateCommunity/styles.scss';
 import '../components/pages/Login/styles.scss';
 import '../components/pages/SignUp/styles.scss';
 
-const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
-  cache: new InMemoryCache(),
-  credentials: 'include',
-});
-
 function MyApp({ Component, pageProps }) {
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={apolloClient}>
       <UserProvider>
         <Component {...pageProps} />
       </UserProvider>
