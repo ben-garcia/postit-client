@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { FC, useState } from 'react';
 import {
   ChevronDownIcon,
@@ -33,7 +34,7 @@ import { Community } from '../../../types';
  *
  * otherwise import when using Storybook
  */
-import './styles.scss';
+// import './styles.scss';
 
 interface CommunityPageProps {
   community: Community;
@@ -45,6 +46,7 @@ const CommunityPage: FC<CommunityPageProps> = props => {
     state: { user },
   } = useUser();
   const breakpoint = useBreakpoint();
+  const router = useRouter();
   const [joinButtonText, setJoinButtonText] = useState('Joined');
   const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
 
@@ -106,12 +108,22 @@ const CommunityPage: FC<CommunityPageProps> = props => {
               secondary
               width="96px"
             >
-              {joinButtonText}
+              <Text color="var(--color-brand-blue200)">{joinButtonText}</Text>
             </Button>
           ) : (
             <Button
               className="community-page__join-button"
-              onClick={() => setLoginModalIsOpen(true)}
+              onClick={() => {
+                if (
+                  breakpoint === 'xs' ||
+                  breakpoint === 'sm' ||
+                  breakpoint === 'md'
+                ) {
+                  router.push('/register');
+                } else {
+                  setLoginModalIsOpen(true);
+                }
+              }}
               primary
             >
               Join
@@ -171,7 +183,7 @@ const CommunityPage: FC<CommunityPageProps> = props => {
           )}
 
           <div className="community-page__post-filter-by">
-            <div>
+            <div className="flex">
               <Button
                 className="community-page__button"
                 color="transparent"
