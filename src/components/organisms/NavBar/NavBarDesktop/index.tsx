@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { FC, useState } from 'react';
-import { AddIcon, EnvelopIcon } from 'supernova-ui';
+import { AddIcon, EnvelopIcon, Tooltip } from 'supernova-ui';
 
 import {
   Button,
@@ -34,14 +34,16 @@ const NavBarDesktop: FC<NavBarDesktopProps> = () => {
   } = useUser();
 
   return (
-    <header className="navbar-desktop">
+    <nav className="navbar-desktop">
       <Link href="/">
         <a className="navbar-desktop__wrapper">
           <LogoIcon size="3rem" />
           <LogoTextIcon size="4rem" />
         </a>
       </Link>
+
       <SearchBar />
+
       <div className="navbar-desktop__wrapper">
         {!user.isLoggedIn && (
           <>
@@ -63,48 +65,66 @@ const NavBarDesktop: FC<NavBarDesktopProps> = () => {
         )}
         {user.isLoggedIn && (
           <>
-            <Button
-              className="navbar-desktop__button"
-              hoverColor="var(--color-brand-grey100)"
-              secondary
-            >
-              <RisingIcon size="1.2rem" />
-            </Button>
-            <Button
-              className="navbar-desktop__button"
-              hoverColor="var(--color-brand-grey100)"
-              secondary
-            >
-              <TopIcon size="1.2rem" />
-            </Button>
-            <Button
-              className="navbar-desktop__button"
-              hoverColor="var(--color-brand-grey100)"
-              secondary
-            >
-              <CameraIcon size="1.2rem" />
-            </Button>
-            <Button
-              className="navbar-desktop__button"
-              hoverColor="var(--color-brand-grey100)"
-              secondary
-            >
-              <ChatIcon size="1.2rem" />
-            </Button>
-            <Button
-              className="navbar-desktop__button"
-              hoverColor="var(--color-brand-grey100)"
-              secondary
-            >
-              <EnvelopIcon size="1.2rem" />
-            </Button>
-            <Button
-              className="navbar-desktop__button"
-              hoverColor="var(--color-brand-grey100)"
-              secondary
-            >
-              <AddIcon size="1.2rem" />
-            </Button>
+            <Tooltip content="Popular">
+              <Button
+                className="navbar-desktop__button"
+                hoverColor="var(--color-brand-grey100)"
+                secondary
+              >
+                <RisingIcon size="1.2rem" />
+              </Button>
+            </Tooltip>
+
+            <Tooltip content="All">
+              <Button
+                className="navbar-desktop__button"
+                hoverColor="var(--color-brand-grey100)"
+                secondary
+              >
+                <TopIcon size="1.2rem" />
+              </Button>
+            </Tooltip>
+
+            <Tooltip content="Postit Live">
+              <Button
+                className="navbar-desktop__button"
+                hoverColor="var(--color-brand-grey100)"
+                secondary
+              >
+                <CameraIcon size="1.2rem" />
+              </Button>
+            </Tooltip>
+
+            <Tooltip content="Chat">
+              <Button
+                className="navbar-desktop__button"
+                hoverColor="var(--color-brand-grey100)"
+                secondary
+              >
+                <ChatIcon size="1.2rem" />
+              </Button>
+            </Tooltip>
+
+            <Tooltip content="Messages">
+              <Button
+                className="navbar-desktop__button"
+                hoverColor="var(--color-brand-grey100)"
+                secondary
+              >
+                <EnvelopIcon size="1.2rem" />
+              </Button>
+            </Tooltip>
+
+            <Tooltip content="Create Post">
+              <Button
+                className="navbar-desktop__button"
+                hoverColor="var(--color-brand-grey100)"
+                secondary
+              >
+                <AddIcon size="1.2rem" />
+              </Button>
+            </Tooltip>
+
             <Button
               className="navbar-desktop__coins-button"
               hoverColor="var(--color-brand-grey100)"
@@ -127,6 +147,7 @@ const NavBarDesktop: FC<NavBarDesktopProps> = () => {
           }}
         />
       )}
+
       {signUpModalIsOpen && !loginModalIsOpen && (
         <SignUpModal
           isOpen={signUpModalIsOpen}
@@ -137,7 +158,7 @@ const NavBarDesktop: FC<NavBarDesktopProps> = () => {
           }}
         />
       )}
-    </header>
+    </nav>
   );
 };
 
