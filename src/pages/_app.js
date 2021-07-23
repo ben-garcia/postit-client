@@ -1,4 +1,5 @@
 import { ApolloProvider } from '@apollo/client';
+import { SupernovaProvider } from 'supernova-ui';
 
 import { UserProvider } from '../contexts';
 import { apolloClient } from '../utils';
@@ -22,9 +23,11 @@ import '../components/pages/SignUp/styles.scss';
 function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={apolloClient}>
-      <UserProvider>
-        <Component {...pageProps} />
-      </UserProvider>
+      <SupernovaProvider>
+        <UserProvider>
+          <Component {...pageProps} />
+        </UserProvider>
+      </SupernovaProvider>
     </ApolloProvider>
   );
 }

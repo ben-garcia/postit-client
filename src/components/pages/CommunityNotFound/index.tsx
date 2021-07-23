@@ -8,7 +8,7 @@ import { NavBar, CreateCommunityModal } from '../../organisms';
  *
  * otherwise import when using Storybook
  */
-import './styles.scss';
+// import './styles.scss';
 
 function CommunityNotFoundPage() {
   const [createCommunityModalIsOpen, setCreateCommunityModalIsOpen] = useState(
