@@ -1,10 +1,16 @@
 import { useRouter } from 'next/router';
 import { FC, useState } from 'react';
 import {
+  Accordion,
+  AccordionHeaderButton,
+  AccordionItem,
+  AccordionPanel,
+  AddIcon,
   ChevronDownIcon,
   ChevronUpIcon,
   CloseIcon,
   EnvelopIcon,
+  Heading,
   Paragraph,
   Text,
   useBreakpoint,
@@ -23,6 +29,7 @@ import {
   NewIcon,
   ModShieldIcon,
   PencilIcon,
+  SwitchButton,
   TopIcon,
 } from '../../atoms';
 import NavBar from '../../organisms/NavBar';
@@ -239,24 +246,85 @@ const CommunityPage: FC<CommunityPageProps> = props => {
             </div>
           </div>
 
+          {/* TODO move to its own component */}
           {user.isLoggedIn && (
-            <div className="community-page__grow-community">
-              <Button
-                className="community-page__button border-none flex-justify-between"
-                color="transparent"
-                hoverColor="transparent"
-                padding="0 sm"
-                margin="1rem 0.5rem"
-                secondary
-                width="100%"
-              >
-                <Text color="var(--color-brand-black100)" fontSize="1.3rem">
+            <Accordion
+              allowToggle
+              className="community-accordion"
+              defaultIndices={[0]}
+            >
+              <AccordionItem>
+                <AccordionHeaderButton className="community-accordion__header">
                   Grow your community
-                </Text>
+                </AccordionHeaderButton>
+                <AccordionPanel>
+                  <div className="community-accordion__panel">
+                    <div className="community-accordion__inner">
+                      <div className="community-accordion__circle">
+                        <AddIcon
+                          fill="var(--color-brand-white)"
+                          size="1.5rem"
+                        />
+                      </div>
 
-                <ChevronDownIcon size="0.6rem" />
-              </Button>
-            </div>
+                      <svg
+                        viewBox="0 0 1 1"
+                        preserveAspectRatio="none"
+                        style={{ width: '67px' }}
+                      >
+                        <path
+                          style={{ fill: 'rgba(113,147,255,0.2)' }}
+                          d="M 0 1 V 0 H 1 Z"
+                        />
+                      </svg>
+
+                      <svg
+                        viewBox="0 0 1 1"
+                        preserveAspectRatio="none"
+                        style={{ width: '46px' }}
+                      >
+                        <path
+                          style={{ fill: 'rgba(113,147,255,0.2)' }}
+                          d="M 0 0 V 1 H 1 Z"
+                        />
+                      </svg>
+                    </div>
+
+                    <div>
+                      <Heading level={3} fontSize="md">
+                        Time to make your first post!
+                      </Heading>
+
+                      <Paragraph
+                        color="var(--color-brand-grey200)"
+                        fontSize="0.8rem"
+                      >
+                        Now that you’ve created your community, start things off
+                        right by making your first post
+                      </Paragraph>
+
+                      <Button
+                        color="var(--color-brand-blue400)"
+                        hoverColor="var(--color-brand-blue200)"
+                        margin="sm 0 0 0"
+                      >
+                        Make your first post
+                      </Button>
+                    </div>
+
+                    <Button
+                      className="community-accordion__close-button"
+                      secondary
+                    >
+                      <CloseIcon
+                        fill="var(--color-brand-grey200)"
+                        size="0.8rem"
+                      />
+                    </Button>
+                  </div>
+                </AccordionPanel>
+              </AccordionItem>
+            </Accordion>
           )}
 
           {/* TODO move to its own component */}
@@ -548,17 +616,32 @@ const CommunityPage: FC<CommunityPageProps> = props => {
 
                     <hr className="divider" />
 
-                    <Button
-                      className="community-page__button border-none flex-justify-between"
-                      color="transparent"
-                      hoverColor="var(--color-brand-grey100)"
-                      padding="0 sm"
-                      secondary
-                      width="100%"
+                    <Accordion
+                      allowToggle
+                      className="community-options-accordion"
                     >
-                      Community Options
-                      <ChevronDownIcon margin="0 0 0 xs" size="0.5rem" />
-                    </Button>
+                      <AccordionItem>
+                        <AccordionHeaderButton>
+                          <Text className="color-blue100">
+                            Community Options
+                          </Text>
+                        </AccordionHeaderButton>
+                        <AccordionPanel className="community-options-accordion__panel">
+                          <div className="flex flex-justify-between">
+                            <div className="flex flex-center">
+                              <ModShieldIcon
+                                fill="var(--color-brand-grey200)"
+                                margin="0 0.2rem 0 0"
+                                size="1.2rem"
+                              />
+                              <Text fontSize="0.9rem">Community theme</Text>
+                            </div>
+                            {/* TODO define state */}
+                            <SwitchButton isActive onChange={() => {}} />
+                          </div>
+                        </AccordionPanel>
+                      </AccordionItem>
+                    </Accordion>
                   </>
                 )}
               </div>

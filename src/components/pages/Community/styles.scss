@@ -106,17 +106,6 @@
     }
   }
 
-  &__grow-community {
-    background-color: var(--color-brand-white);
-    display: flex;
-    justify-content: space-between;
-    margin: 0.5rem 0;
-
-    @include media-query($breakpoint-md) {
-      margin: 0.15rem 0;
-    }
-  }
-
   &__user-button.snui-button {
     border-radius: 100% !important;
     box-shadow: unset;
@@ -168,6 +157,58 @@
   }
 }
 
+// ------- accordion --------------
+.community-accordion {
+  background-color: var(--color-brand-white);
+  margin: 0.5rem 0;
+
+  @include media-query($breakpoint-md) {
+    margin: 0.15rem 0;
+  }
+
+  &__header {
+    font-size: 1.2rem;
+  }
+
+  &__panel {
+    border: 1px solid #edeff1;
+    border-radius: 8px;
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  &__close-button {
+    border: none;
+    border-radius: 4px !important;
+    box-shadow: unset;
+    height: 30px;
+    width: 30px;
+    padding-inline-start: unset;
+    padding-inline-end: unset;
+    margin: 0 0.2rem;
+  }
+
+  &__inner {
+    position: relative;
+    flex-basis: 10%;
+  }
+
+  &__circle {
+    align-items: center;
+    background-color: var(--color-brand-blue400);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    height: 45px;
+    margin: 0 0.2rem;
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    width: 45px;
+  }
+}
+// ------- accordion --------------
+
 // -------post card--------------
 .post-card {
   background-color: var(--color-brand-white);
@@ -184,6 +225,18 @@
   }
 }
 // -------post card--------------
+
+// ------- community options accordion --------------
+.community-options-accordion {
+  &__panel {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+.color-blue100 {
+  color: var(--color-brand-blue100);
+}
 
 // TODO move to sass utils file
 .position-relative {
@@ -227,6 +280,11 @@
 
 .flex {
   display: flex;
+}
+
+.flex-center {
+  align-items: center;
+  justify-content: center;
 }
 
 .flex-justify-between {
