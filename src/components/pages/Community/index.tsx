@@ -20,18 +20,16 @@ import {
 import {
   AddVideoIcon,
   Button,
-  CakeIcon,
   CircleCheckmark,
-  CoinIcon,
   HotIcon,
   LinkIcon,
   NewCommunityIcon,
   NewIcon,
   ModShieldIcon,
   PencilIcon,
-  SwitchButton,
   TopIcon,
 } from '../../atoms';
+import { CommunityInfo } from '../../molecules';
 import NavBar from '../../organisms/NavBar';
 import { LoginModal } from '../../organisms';
 import { useUser } from '../../../hooks';
@@ -41,7 +39,7 @@ import { Community } from '../../../types';
  *
  * otherwise import when using Storybook
  */
-// import './styles.scss';
+import './styles.scss';
 
 interface CommunityPageProps {
   community: Community;
@@ -489,163 +487,7 @@ const CommunityPage: FC<CommunityPageProps> = props => {
 
         {breakpoint !== 'xs' && breakpoint !== 'sm' && breakpoint !== 'md' && (
           <aside className="community-page__aside">
-            <div className="community-page__container-wrapper">
-              <div style={{ backgroundColor: community.themeColor }}>
-                <div className="community-page__about-header">
-                  <Text color="var(--color-brand-white)" fontWeight="xxl">
-                    About community
-                  </Text>
-                  {user.isLoggedIn && (
-                    <div className="flex">
-                      <Button
-                        color="transparent"
-                        className="community-page__button"
-                      >
-                        <ModShieldIcon
-                          fill="var(--color-brand-white)"
-                          margin="0 0.5rem"
-                          size="1.2rem"
-                        />
-                        Mod Tools
-                      </Button>
-                      <Button
-                        color="transparent"
-                        className="community-page__button"
-                      >
-                        <Text
-                          className="align-self-center"
-                          color="var(--color-brand-white)"
-                          fontSize="1.4rem"
-                        >
-                          ...
-                        </Text>
-                      </Button>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className="community-page__wrapper-container">
-                {user.isLoggedIn ? (
-                  <Button
-                    className="community-page__description community-page__button"
-                    secondary
-                  >
-                    Add description
-                  </Button>
-                ) : (
-                  <Text fontSize="0.9rem">{`Welcome to ${community.name}`}</Text>
-                )}
-
-                <div className="flex margin-bottom-1">
-                  <div className="flex flex-column">
-                    <Text fontWeight="xxl">1</Text>
-
-                    <Text fontSize="0.75rem" fontWeight="xxl">
-                      Members
-                    </Text>
-                  </div>
-
-                  <div className="flex flex-column margin-left-5">
-                    <Text fontWeight="xxl">1</Text>
-
-                    <Text fontSize="0.75rem" fontWeight="xxl">
-                      Online
-                    </Text>
-                  </div>
-                </div>
-
-                <hr className="divider" />
-
-                <div className="flex">
-                  <CakeIcon size="1.5rem" />
-                  <Text
-                    className="align-self-end"
-                    fontSize="0.9rem"
-                    margin="0 0 0 sm"
-                  >
-                    {`Created ${
-                      new Date(Number(community.createdAt))
-                        .toLocaleString()
-                        .split(',')[0]
-                    }`}
-                  </Text>
-                </div>
-
-                {user.isLoggedIn && (
-                  <>
-                    <hr className="divider" />
-
-                    <div className="flex">
-                      <CoinIcon size="1.2rem" />
-
-                      <Text
-                        className="align-self-end"
-                        fontSize="0.9rem"
-                        margin="0 0 0 sm"
-                      >
-                        {`${community.coinCount} Coins`}
-                      </Text>
-                    </div>
-
-                    <hr className="divider" />
-
-                    <div className="flex">
-                      <Text color="var(--color-brand-red100)" fontSize="0.8rem">
-                        New
-                      </Text>
-
-                      <Text fontSize="0.9rem" margin="0 0 0 0.2rem">
-                        Community topics
-                      </Text>
-                    </div>
-
-                    <Button
-                      className="community-page__button border-none"
-                      color="transparent"
-                      hoverColor="transparent"
-                      secondary
-                    >
-                      Add a Primary Topic
-                      <ChevronDownIcon margin="0 0 0 xs" size="0.5rem" />
-                    </Button>
-
-                    <Button margin="0.7rem 0" primary width="100%">
-                      Create Post
-                    </Button>
-
-                    <hr className="divider" />
-
-                    <Accordion
-                      allowToggle
-                      className="community-options-accordion"
-                    >
-                      <AccordionItem>
-                        <AccordionHeaderButton>
-                          <Text className="color-blue100">
-                            Community Options
-                          </Text>
-                        </AccordionHeaderButton>
-                        <AccordionPanel className="community-options-accordion__panel">
-                          <div className="flex flex-justify-between">
-                            <div className="flex flex-center">
-                              <ModShieldIcon
-                                fill="var(--color-brand-grey200)"
-                                margin="0 0.2rem 0 0"
-                                size="1.2rem"
-                              />
-                              <Text fontSize="0.9rem">Community theme</Text>
-                            </div>
-                            {/* TODO define state */}
-                            <SwitchButton isActive onChange={() => {}} />
-                          </div>
-                        </AccordionPanel>
-                      </AccordionItem>
-                    </Accordion>
-                  </>
-                )}
-              </div>
-            </div>
+            <CommunityInfo community={community} isCreatePost={false} />
 
             {user.isLoggedIn && (
               <div className="community-page__container-wrapper">

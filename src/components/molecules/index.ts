@@ -1,3 +1,2 @@
-import UserMenu from './UserMenu';
-
-export { UserMenu };
+export { default as UserMenu } from './UserMenu';
+export { default as CommunityInfo } from './CommunityInfo';
