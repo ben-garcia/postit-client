@@ -2,7 +2,7 @@
 @import '../../../sass/variables';
 
 .community-info {
-  max-width: 320px;
+  max-width: inherit;
   overflow: hidden;
 
   &__button.snui-button {
@@ -22,7 +22,7 @@
   }
 
   &__container-wrapper {
-    margin: 1rem 0;
+    margin-top: 1rem;
   }
 
   &__wrapper-container {
