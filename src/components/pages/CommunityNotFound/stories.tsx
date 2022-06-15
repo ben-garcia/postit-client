@@ -9,11 +9,22 @@ export default {
   title: 'Postit/Pages/CommunityNotFound',
 } as Meta;
 
-export const Default = () => (
+export const LoggedIn = () => (
   <UserContext.Provider
     value={{
       dispatch: () => {},
       state: { user: { isLoggedIn: true, username: 'storybookuser' } },
+    }}
+  >
+    <CommunityNotFound />
+  </UserContext.Provider>
+);
+
+export const Guest = () => (
+  <UserContext.Provider
+    value={{
+      dispatch: () => {},
+      state: { user: { isLoggedIn: false } },
     }}
   >
     <CommunityNotFound />
