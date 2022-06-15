@@ -6,6 +6,7 @@ import { apolloClient } from '../utils';
 
 import '../sass/main.scss';
 import '../components/atoms/SwitchButton/styles.scss';
+import '../components/molecules/CommunityInfo/styles.scss';
 import '../components/molecules/UserMenu/styles.scss';
 import '../components/organisms/CreateCommunityModal/styles.scss';
 import '../components/organisms/LoginModal/styles.scss';
