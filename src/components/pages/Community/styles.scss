@@ -173,13 +173,11 @@
   }
 
   &__close-button {
-    border: none;
+    border: none !important;
     border-radius: 4px !important;
-    box-shadow: unset;
-    height: 30px;
-    width: 30px;
-    padding-inline-start: unset;
-    padding-inline-end: unset;
+    box-shadow: unset !important;
+    padding-inline-start: unset !important;
+    padding-inline-end: unset !important;
     margin: 0 0.2rem;
   }
 

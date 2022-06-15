@@ -23,7 +23,7 @@ import { Community } from '../../../types';
  *
  * otherwise import when using Storybook
  */
-import './styles.scss';
+// import './styles.scss';
 
 interface CommunityInfoProps {
   community: Community;

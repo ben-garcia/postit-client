@@ -82,7 +82,7 @@ const UserMenu: FC<UserMenuProps> = () => {
             </>
           )}
         </MenuButton>
-        <MenuList position="right" width="220px">
+        <MenuList width="220px">
           {user.isLoggedIn && (
             <MenuGroup className="user-menu__group" title="My Stuff">
               <MenuItem className="user-menu__item space-between">
