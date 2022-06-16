@@ -123,7 +123,7 @@ const LoginModal: FC<LoginModalProps> = props => {
               label="Username"
               labelClassName="login-modal__input"
               name="username"
-              onBlur={handleBlur}
+              onBlur={handleBlur as any}
               onChange={handleChange}
               ref={usernameInputRef}
               rightIcon={
@@ -161,7 +161,7 @@ const LoginModal: FC<LoginModalProps> = props => {
               label="Password"
               labelClassName="login-modal__input"
               name="password"
-              onBlur={handleBlur}
+              onBlur={handleBlur as any}
               onChange={handleChange}
               rightIcon={
                 errors.password ? (
