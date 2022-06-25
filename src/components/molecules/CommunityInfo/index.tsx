@@ -23,7 +23,7 @@ import { Community } from '../../../types';
  *
  * otherwise import when using Storybook
  */
-// import './styles.scss';
+import './styles.scss';
 
 interface CommunityInfoProps {
   community: Community;
@@ -55,11 +55,11 @@ const CommunityInfo: React.FC<CommunityInfoProps> = props => {
                 <div className="flex">
                   <Button
                     color="transparent"
-                    className="community-info__button"
+                    className="community-info__button ci-mod-tools-button"
                   >
                     <ModShieldIcon
                       fill="var(--color-brand-white)"
-                      margin="0 0.5rem"
+                      margin="0 0.1rem 0 0"
                       size="1.2rem"
                     />
                     Mod Tools

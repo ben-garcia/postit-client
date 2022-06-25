@@ -3,7 +3,13 @@
 
 .community-info {
   max-width: inherit;
+  width: 320px;
   overflow: hidden;
+
+  // mod tools button
+  &__button.ci-mod-tools-button {
+    font-size: 14px;
+  }
 
   &__button.snui-button {
     border-radius: 4px !important;
