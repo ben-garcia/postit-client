@@ -4,6 +4,8 @@ import { SupernovaProvider } from 'supernova-ui';
 import { UserProvider } from '../contexts';
 import { apolloClient } from '../utils';
 
+import 'supernova-ui/dist/esm/css/supernova-ui.min.css';
+
 import '../sass/main.scss';
 import '../components/atoms/SwitchButton/styles.scss';
 import '../components/molecules/CommunityInfo/styles.scss';

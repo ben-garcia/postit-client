@@ -3,6 +3,7 @@ import React from 'react';
 
 import { SupernovaProvider } from 'supernova-ui';
 
+import 'supernova-ui/dist/esm/css/supernova-ui.min.css';
 import '../src/sass/main.scss';
 
 export const parameters = {
