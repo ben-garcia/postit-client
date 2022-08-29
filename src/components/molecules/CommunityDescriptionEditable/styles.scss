@@ -1,0 +1,48 @@
+.com-desc-editable {
+  background-color: var(--color-brand-grey600);
+  border-radius: 4px;
+  padding: 0.25rem;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__preview {
+    font-size: 0.7rem;
+
+    &--blue {
+      color: var(--color-brand-blue100);
+      font-weight: 700;
+    }
+
+    &--black {
+      font-size: 0.85rem;
+      color: var(--color-brand-black200);
+    }
+  }
+
+  &__textarea {
+    resize: none;
+    border: none;
+  }
+
+  &__container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0.3rem;
+    width: 100%;
+  }
+
+  &__button-container {
+    margin-right: 1rem;
+  }
+
+  &__button {
+    box-shadow: none;
+    height: 1rem;
+    padding-inline-end: unset;
+    padding-inline-start: unset;
+  }
+}
