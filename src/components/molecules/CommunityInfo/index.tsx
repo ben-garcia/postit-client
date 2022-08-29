@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import {
   Accordion,
   AccordionHeaderButton,
   AccordionItem,
   AccordionPanel,
   ChevronDownIcon,
+  Editable,
   Text,
 } from 'supernova-ui';
 
@@ -16,6 +17,7 @@ import {
   NewCommunityIcon,
   SwitchButton,
 } from '../../atoms';
+import CommunityDescriptionEditable from '../CommunityDescriptionEditable';
 import { useUser } from '../../../hooks';
 import { Community } from '../../../types';
 
@@ -32,6 +34,9 @@ interface CommunityInfoProps {
 
 const CommunityInfo: React.FC<CommunityInfoProps> = props => {
   const { community, isCreatePost = true } = props;
+
+  const [description, setDescription] = useState(community.description || '');
+  const descriptionRef = useRef('');
   const {
     state: { user },
   } = useUser();
@@ -85,12 +90,23 @@ const CommunityInfo: React.FC<CommunityInfoProps> = props => {
 
       <div className="community-info__wrapper-container">
         {user.isLoggedIn && !isCreatePost ? (
-          <Button
-            className="community-info__description community-info__button"
-            secondary
+          <Editable
+            onCancel={() => {
+              setDescription(descriptionRef?.current);
+            }}
+            onChange={val => setDescription(val)}
+            onSubmit={val => {
+              descriptionRef.current = val;
+            }}
+            placeholder="Add description"
+            value={description}
           >
-            Add description
-          </Button>
+            <CommunityDescriptionEditable
+              description={description}
+              descriptionRef={descriptionRef}
+              setDescription={setDescription}
+            />
+          </Editable>
         ) : (
           <>
             <div className="flex flex-items-start">
